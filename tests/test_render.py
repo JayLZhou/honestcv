@@ -91,3 +91,10 @@ def test_saving_writes_the_document_and_its_trace(tmp_path, mined):
     doc, trace = rendered.save(str(tmp_path / "cv.md"))
     assert doc.endswith("cv.md") and trace.endswith("cv.trace.json")
     assert len(claim_lines(open(doc, encoding="utf-8").read())) > 0
+
+
+def test_english_counts_read_naturally():
+    from honestcv.i18n import render_fact
+    text = render_fact("test_work", {"repo": "o/r", "area": "tests", "commits": 1, "files": 1}, "en")
+    assert "1 commit," in text and "1 test file" in text
+    assert "1 commits" not in text and "1 test files" not in text

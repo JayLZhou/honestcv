@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from functools import lru_cache
 from typing import Any, Dict
 
@@ -48,6 +49,24 @@ def fact_template(name: str, lang: str = DEFAULT_LANG) -> str:
     return entry.get(lang) or entry.get("en") or "{text}"
 
 
+# Counts come straight out of the evidence, so "1 commits" happens. Fixing it in
+# the template is impossible (the number is not known when the template is written),
+# and fixing it in the payload would mean storing prose instead of a count.
+_COUNTED = ("commits", "files", "defects", "days", "tests", "issues", "lines",
+            "requests", "weeks", "months")
+
+
+def _singularise(text: str) -> str:
+    for word in _COUNTED:
+        # "1 commits" and "1 test files" both need fixing, so allow one modifier.
+        text = re.sub(
+            r"\b1 ((?:[A-Za-z]+ )?)%s\b" % word,
+            lambda m, w=word: "1 %s%s" % (m.group(1), w[:-1]),
+            text,
+        )
+    return text
+
+
 def render_fact(template: str, payload: Dict[str, Any], lang: str = DEFAULT_LANG) -> str:
     """Fill a fact template from its payload. Missing keys render as '?' rather
     than raising, so a malformed fact is visible instead of crashing a resume."""
@@ -58,9 +77,10 @@ def render_fact(template: str, payload: Dict[str, Any], lang: str = DEFAULT_LANG
             return "?"
 
     try:
-        return tpl.format_map(_Safe(payload))
+        text = tpl.format_map(_Safe(payload))
     except Exception:  # pragma: no cover - defensive
         return str(payload)
+    return _singularise(text) if normalise_lang(lang) == "en" else text
 
 
 def localise(entry: Any, lang: str = DEFAULT_LANG, **kwargs: Any) -> str:
