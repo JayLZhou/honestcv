@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 320" width="1240" height="320" role="img" aria-label="honestcv pipeline: evidence to fact base to match to output to proof">
+<style>text{font-variant-ligatures:none}</style>
+<rect width="1240" height="320" rx="14" fill="#0d1117" stroke="#30363d"/>
+<text x="36" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#8b949e">EVIDENCE</text>
+<rect x="36" y="66" width="196" height="60" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<text x="52" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e6edf3">git history</text>
+<text x="52" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e">commits you authored</text>
+<rect x="36" y="142" width="196" height="60" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<text x="52" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e6edf3">guided interview</text>
+<text x="52" y="186" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e">what code cannot show</text>
+<path d="M 253.0 150 l 11 11 l -11 11" fill="none" stroke="#8b949e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="284" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#8b949e">FACT BASE</text>
+<rect x="284" y="66" width="196" height="60" rx="12" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+<text x="300" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e6edf3">facts + links</text>
+<text x="300" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e">counted, never estimated</text>
+<path d="M 501.0 150 l 11 11 l -11 11" fill="none" stroke="#8b949e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="532" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#8b949e">TARGET</text>
+<rect x="532" y="66" width="196" height="60" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<text x="548" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e6edf3">job description</text>
+<text x="548" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e">requirements, parsed</text>
+<rect x="532" y="142" width="196" height="60" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<text x="548" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e6edf3">match</text>
+<text x="548" y="186" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e">covered / gap / unread</text>
+<path d="M 749.0 150 l 11 11 l -11 11" fill="none" stroke="#8b949e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="780" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#8b949e">OUTPUT</text>
+<rect x="780" y="66" width="196" height="60" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<text x="796" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e6edf3">resume · cover letter</text>
+<text x="796" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e">ordered for this job</text>
+<rect x="780" y="142" width="196" height="60" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<text x="796" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e6edf3">two-week plan</text>
+<text x="796" y="186" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e">for every gap</text>
+<rect x="780" y="218" width="196" height="60" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<text x="796" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e6edf3">interview practice</text>
+<text x="796" y="262" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e">from your own commits</text>
+<path d="M 997.0 150 l 11 11 l -11 11" fill="none" stroke="#8b949e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1028" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#8b949e">PROOF</text>
+<rect x="1028" y="66" width="196" height="60" rx="12" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+<text x="1044" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#e6edf3">verify</text>
+<text x="1044" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e">document × trace × facts</text>
+<rect x="1028" y="142" width="196" height="34" rx="10" fill="#132d1c"/>
+<text x="1044" y="164" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#3fb950">✓ every line traced</text>
+<rect x="1028" y="186" width="196" height="34" rx="10" fill="#2d1618"/>
+<text x="1044" y="208" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#f85149">✗ rejected</text>
+</svg>

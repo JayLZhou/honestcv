@@ -1,8 +1,29 @@
-<div align="right"><a href="README.md">English</a> · <b>中文</b></div>
+<div align="center">
 
-# honestcv
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <img alt="honestcv — 一份招聘方能逐条核验的简历" src="assets/banner-light.svg" width="860">
+</picture>
 
-**把你已经有的证据，变成一份招聘方能逐条核验的简历。**
+<br><br>
+
+[![CI](https://github.com/JayLZhou/honestcv/actions/workflows/ci.yml/badge.svg)](https://github.com/JayLZhou/honestcv/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Dependencies](https://img.shields.io/badge/dependencies-none-1a7f37?style=flat-square)](pyproject.toml)
+[![License](https://img.shields.io/badge/license-MIT-24292f?style=flat-square)](LICENSE)
+
+<b><a href="#60-秒上手">60 秒上手</a></b> ·
+<b><a href="#它为什么和别的简历工具不一样">为什么不一样</a></b> ·
+<b><a href="#命令">命令</a></b> ·
+<b><a href="docs/design.md">设计笔记</a></b> ·
+<b><a href="README.md">English</a></b>
+
+</div>
+
+<br>
+
+> [!IMPORTANT]
+> **把你已经有的证据，变成一份招聘方能逐条核验的简历。**
 
 这个工具是给"够格但说不清楚"的人用的：培训班出来的转行者、自学编程的、没有大厂实习的应届生。
 他们的困境很具体——GitHub 上是三个和同班同学一模一样的练手项目，简历上没有可识别的公司名，
@@ -23,6 +44,18 @@ honestcv 不帮你编一个更好看的故事。它做三件事：
 
 ---
 
+## 看它当场拒绝一句假话
+
+<div align="center">
+  <img alt="终端录像：honestcv 挖掘仓库、匹配 JD、生成已验证的简历，然后拒绝一句编造的 bullet" src="assets/demo.svg" width="880">
+</div>
+
+<div align="center"><sub>真实输出，来自 <code>examples/demo.sh</code>。你自己跑一遍只要二十秒。</sub></div>
+
+<br>
+
+最后那个退出码就是这个产品。这个仓库里其余所有东西，都是为了走到那一步。
+
 ## 60 秒上手
 
 ```bash
@@ -39,6 +72,7 @@ honestcv verify resume.md                  # 证明每一条都站得住
 
 ```bash
 bash examples/demo.sh
+python3 assets/make_assets.py   # 重新生成上面的插图
 ```
 
 这个脚本会造一个"三周晚上做出来的"示例仓库，跑完整条链路，
@@ -47,6 +81,14 @@ bash examples/demo.sh
 ---
 
 ## 它为什么和别的简历工具不一样
+
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
+  <img alt="工作流：证据 → 事实库 → 对着 JD 匹配 → 简历·计划·面试题 → 验证" src="assets/pipeline-light.svg" width="900">
+</picture>
+</div>
+
 
 ### 一、事实库，不是"上传简历"
 
@@ -197,6 +239,7 @@ honestcv resume --jd jd.txt --polish
 pip install -e ".[dev]"
 pytest -q            # 91 个测试，不需要网络，不需要 API key
 bash examples/demo.sh
+python3 assets/make_assets.py   # 重新生成上面的插图
 ```
 
 项目没有任何必需依赖，纯标准库，Python 3.9+（CI 在 3.9 容器和 3.11 / 3.12 / 3.13 上各跑一遍，包括上面那个 demo）。

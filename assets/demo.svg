@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 656" width="940" height="656" role="img" aria-label="terminal recording of honestcv rejecting an invented resume line">
+<style>text{font-variant-ligatures:none;font-feature-settings:'liga' 0,'calt' 0}.l{opacity:0}@keyframes a0{0%,3.623%{opacity:0;transform:translateY(3px)}4.823%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l0{animation:a0 16.56s linear infinite}@keyframes a1{0%,6.401%{opacity:0;transform:translateY(3px)}7.601%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l1{animation:a1 16.56s linear infinite}@keyframes a2{0%,9.179%{opacity:0;transform:translateY(3px)}10.379%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l2{animation:a2 16.56s linear infinite}@keyframes a3{0%,11.957%{opacity:0;transform:translateY(3px)}13.157%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l3{animation:a3 16.56s linear infinite}@keyframes a4{0%,14.734%{opacity:0;transform:translateY(3px)}15.934%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l4{animation:a4 16.56s linear infinite}@keyframes a5{0%,17.512%{opacity:0;transform:translateY(3px)}18.712%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l5{animation:a5 16.56s linear infinite}@keyframes a6{0%,20.290%{opacity:0;transform:translateY(3px)}21.490%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l6{animation:a6 16.56s linear infinite}@keyframes a7{0%,23.068%{opacity:0;transform:translateY(3px)}24.268%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l7{animation:a7 16.56s linear infinite}@keyframes a8{0%,25.845%{opacity:0;transform:translateY(3px)}27.045%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l8{animation:a8 16.56s linear infinite}@keyframes a9{0%,28.623%{opacity:0;transform:translateY(3px)}29.823%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l9{animation:a9 16.56s linear infinite}@keyframes a10{0%,31.401%{opacity:0;transform:translateY(3px)}32.601%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l10{animation:a10 16.56s linear infinite}@keyframes a11{0%,34.179%{opacity:0;transform:translateY(3px)}35.379%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l11{animation:a11 16.56s linear infinite}@keyframes a12{0%,36.957%{opacity:0;transform:translateY(3px)}38.157%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l12{animation:a12 16.56s linear infinite}@keyframes a13{0%,39.734%{opacity:0;transform:translateY(3px)}40.934%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l13{animation:a13 16.56s linear infinite}@keyframes a14{0%,42.512%{opacity:0;transform:translateY(3px)}43.712%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l14{animation:a14 16.56s linear infinite}@keyframes a15{0%,45.290%{opacity:0;transform:translateY(3px)}46.490%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l15{animation:a15 16.56s linear infinite}@keyframes a16{0%,48.068%{opacity:0;transform:translateY(3px)}49.268%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l16{animation:a16 16.56s linear infinite}@keyframes a17{0%,50.845%{opacity:0;transform:translateY(3px)}52.045%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l17{animation:a17 16.56s linear infinite}@keyframes a18{0%,53.623%{opacity:0;transform:translateY(3px)}54.823%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l18{animation:a18 16.56s linear infinite}@keyframes a19{0%,56.401%{opacity:0;transform:translateY(3px)}57.601%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l19{animation:a19 16.56s linear infinite}@keyframes a20{0%,59.179%{opacity:0;transform:translateY(3px)}60.379%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l20{animation:a20 16.56s linear infinite}@keyframes a21{0%,61.957%{opacity:0;transform:translateY(3px)}63.157%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l21{animation:a21 16.56s linear infinite}@keyframes a22{0%,64.734%{opacity:0;transform:translateY(3px)}65.934%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l22{animation:a22 16.56s linear infinite}@keyframes a23{0%,67.512%{opacity:0;transform:translateY(3px)}68.712%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l23{animation:a23 16.56s linear infinite}@keyframes a24{0%,70.290%{opacity:0;transform:translateY(3px)}71.490%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l24{animation:a24 16.56s linear infinite}@keyframes a25{0%,73.068%{opacity:0;transform:translateY(3px)}74.268%,96%{opacity:1;transform:translateY(0)}100%{opacity:0}}.l25{animation:a25 16.56s linear infinite}@keyframes blink{0%,45%{opacity:1}50%,100%{opacity:0}}.cur{animation:blink 1s steps(1) infinite}</style>
+<rect width="940" height="656" rx="12" fill="#0d1117" stroke="#30363d"/>
+<rect width="940" height="38" rx="12" fill="#161b22"/>
+<rect y="26" width="940" height="12" fill="#161b22"/>
+<line x1="0" y1="38" x2="940" y2="38" stroke="#30363d"/>
+<circle cx="24" cy="19" r="6" fill="#ff5f57"/>
+<circle cx="44" cy="19" r="6" fill="#febc2e"/>
+<circle cx="64" cy="19" r="6" fill="#28c840"/>
+<text x="470" y="24" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#8b949e">honestcv</text>
+<g class="l l0">
+<text x="26" y="76" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#3fb950">$</text>
+<text x="42" y="76" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#e6edf3">honestcv mine ~/code/orders</text>
+</g>
+<g class="l l1">
+<text x="26" y="97" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">Mined 13 facts from orders, 13 new.</text>
+</g>
+<g class="l l2">
+<text x="26" y="118" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">Skills with evidence: Python, REST API, CI/CD, Docker, FastAPI, Kafka,</text>
+</g>
+<g class="l l3">
+<text x="26" y="139" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">                      PostgreSQL, Redis, Testing</text>
+</g>
+<g class="l l5">
+<text x="26" y="181" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#3fb950">$</text>
+<text x="42" y="181" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#e6edf3">honestcv match --jd jd.txt</text>
+</g>
+<g class="l l6">
+<text x="26" y="202" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">Must-have coverage: 100% (backed by evidence)</text>
+</g>
+<g class="l l7">
+<text x="26" y="223" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#3fb950" xml:space="preserve">  ✓ Experience with Kafka or another message queue</text>
+</g>
+<g class="l l8">
+<text x="26" y="244" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">      Introduced Kafka into demo/orders (visible in requirements.txt)  c7f2ca4</text>
+</g>
+<g class="l l9">
+<text x="26" y="265" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#f85149" xml:space="preserve">  ✗ Kubernetes</text>
+</g>
+<g class="l l10">
+<text x="26" y="286" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">      missing: Kubernetes  →  honestcv plan writes a two-week project instead</text>
+</g>
+<g class="l l12">
+<text x="26" y="328" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#3fb950">$</text>
+<text x="42" y="328" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#e6edf3">honestcv resume --jd jd.txt -o resume.md</text>
+</g>
+<g class="l l13">
+<text x="26" y="349" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">Wrote resume.md (trace: resume.trace.json)</text>
+</g>
+<g class="l l14">
+<text x="26" y="370" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#3fb950" xml:space="preserve">resume.md: PASS (21 claims checked, 0 errors, 0 warnings)</text>
+</g>
+<g class="l l15">
+<text x="26" y="391" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">  Every claim traces back to evidence.</text>
+</g>
+<g class="l l17">
+<text x="26" y="433" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#3fb950">$</text>
+<text x="42" y="433" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#e6edf3">echo '- Led a team of 12 engineers, cut p99 latency by 90%' &gt;&gt; resume.md</text>
+</g>
+<g class="l l18">
+<text x="26" y="454" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#3fb950">$</text>
+<text x="42" y="454" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#e6edf3">honestcv verify resume.md</text>
+</g>
+<g class="l l19">
+<text x="26" y="475" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#f85149" xml:space="preserve">resume.md: FAIL (22 claims checked, 1 errors, 0 warnings)</text>
+</g>
+<g class="l l20">
+<text x="26" y="496" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#f85149" xml:space="preserve">  ✗ [untraced_claim] - Led a team of 12 engineers, cut p99 latency by 90%</text>
+</g>
+<g class="l l21">
+<text x="26" y="517" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">      This line is not in the trace: it was added or edited after</text>
+</g>
+<g class="l l22">
+<text x="26" y="538" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">      generation, so nothing backs it.</text>
+</g>
+<g class="l l24">
+<text x="26" y="580" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#3fb950">$</text>
+<text x="42" y="580" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#e6edf3">echo $?</text>
+</g>
+<g class="l l25">
+<text x="26" y="601" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.4" fill="#8b949e" xml:space="preserve">1</text>
+</g>
+<rect class="cur" x="26" y="610" width="8" height="15" fill="#3fb950"/>
+</svg>

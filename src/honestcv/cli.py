@@ -192,13 +192,23 @@ def cmd_match(args: argparse.Namespace) -> int:
     return 0
 
 
+def _short(path: str) -> str:
+    """Absolute paths make terminal output unreadable; show it relative when we can."""
+    try:
+        rel = os.path.relpath(path)
+    except ValueError:  # pragma: no cover - different drives on Windows
+        return path
+    return rel if not rel.startswith("..") else path
+
+
 def _finish(rendered, out_path: str, factbase_path: str, lang: str, quiet: bool = False) -> int:
     doc, trace = rendered.save(out_path)
     rendered.trace.factbase = os.path.abspath(factbase_path)
     rendered.trace.save(trace)
     report = verify_files(doc, factbase_path, trace)
+    report.document = _short(doc)
     if not quiet:
-        print("Wrote %s (trace: %s)" % (doc, os.path.basename(trace)))
+        print("Wrote %s (trace: %s)" % (_short(doc), os.path.basename(trace)))
         print(render_report(report, lang), end="")
     return 0 if report.ok() else 1
 
