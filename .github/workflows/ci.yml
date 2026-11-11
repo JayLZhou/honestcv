@@ -7,15 +7,14 @@ on:
 
 jobs:
   test:
+    name: test (${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.11", "3.13"]
+        python-version: ["3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0          # the miner's own tests read git history
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
@@ -28,6 +27,33 @@ jobs:
           git config --global user.email "ci@example.com"
           git config --global user.name "CI"
           git config --global init.defaultBranch main
+      - name: Tests
+        run: pytest -q
+      - name: End-to-end smoke test
+        run: bash examples/demo.sh
+
+  # The README claims Python 3.9, and the runner images no longer ship it, so the
+  # claim is tested in a container rather than quietly dropped.
+  test-oldest:
+    name: test (3.9, container)
+    runs-on: ubuntu-latest
+    container: python:3.9-slim
+    steps:
+      - name: Install git
+        run: |
+          apt-get update -qq
+          apt-get install -y --no-install-recommends git >/dev/null
+      - uses: actions/checkout@v4
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      - name: Configure git for the fixture repositories
+        run: |
+          git config --global user.email "ci@example.com"
+          git config --global user.name "CI"
+          git config --global init.defaultBranch main
+          git config --global --add safe.directory '*'
       - name: Tests
         run: pytest -q
       - name: End-to-end smoke test
