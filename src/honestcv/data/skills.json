@@ -1,0 +1,850 @@
+{
+ "AWS": {
+  "aliases": [
+   "amazon web services",
+   "s3",
+   "ec2",
+   "lambda"
+  ],
+  "category": "infra",
+  "ext": [],
+  "manifest": [
+   "boto3",
+   "aws-sdk",
+   "aws-cdk"
+  ],
+  "paths": []
+ },
+ "Airflow": {
+  "aliases": [],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "apache-airflow",
+   "airflow"
+  ],
+  "paths": [
+   "dags/"
+  ]
+ },
+ "Azure": {
+  "aliases": [],
+  "category": "infra",
+  "ext": [],
+  "manifest": [
+   "azure-"
+  ],
+  "paths": []
+ },
+ "C": {
+  "aliases": [],
+  "category": "language",
+  "ext": [
+   ".c",
+   ".h"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "C#": {
+  "aliases": [
+   "csharp",
+   "c#",
+   ".net",
+   "dotnet"
+  ],
+  "category": "language",
+  "ext": [
+   ".cs"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "C++": {
+  "aliases": [
+   "cpp",
+   "c++",
+   "cxx"
+  ],
+  "category": "language",
+  "ext": [
+   ".cpp",
+   ".cc",
+   ".hpp",
+   ".cxx"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "CI/CD": {
+  "aliases": [
+   "ci",
+   "cd",
+   "continuous integration",
+   "github actions",
+   "gitlab ci",
+   "jenkins"
+  ],
+  "category": "infra",
+  "ext": [],
+  "manifest": [],
+  "paths": [
+   ".github/workflows/",
+   ".gitlab-ci",
+   "jenkinsfile",
+   ".circleci/"
+  ]
+ },
+ "CSS": {
+  "aliases": [
+   "scss",
+   "sass"
+  ],
+  "category": "frontend",
+  "ext": [
+   ".css",
+   ".scss",
+   ".sass"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "ClickHouse": {
+  "aliases": [],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "clickhouse"
+  ],
+  "paths": []
+ },
+ "Code Review": {
+  "aliases": [
+   "peer review"
+  ],
+  "category": "practice",
+  "ext": [],
+  "manifest": [],
+  "paths": []
+ },
+ "Django": {
+  "aliases": [],
+  "category": "backend",
+  "ext": [],
+  "manifest": [
+   "django"
+  ],
+  "paths": [
+   "manage.py"
+  ]
+ },
+ "Docker": {
+  "aliases": [
+   "container",
+   "containerise",
+   "containerize"
+  ],
+  "category": "infra",
+  "ext": [],
+  "manifest": [],
+  "paths": [
+   "dockerfile",
+   "docker-compose",
+   ".dockerignore"
+  ]
+ },
+ "Elasticsearch": {
+  "aliases": [
+   "elastic",
+   "opensearch"
+  ],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "elasticsearch",
+   "opensearch"
+  ],
+  "paths": []
+ },
+ "FastAPI": {
+  "aliases": [],
+  "category": "backend",
+  "ext": [],
+  "manifest": [
+   "fastapi",
+   "uvicorn"
+  ],
+  "paths": []
+ },
+ "Flask": {
+  "aliases": [],
+  "category": "backend",
+  "ext": [],
+  "manifest": [
+   "flask"
+  ],
+  "paths": []
+ },
+ "Flink": {
+  "aliases": [],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "flink"
+  ],
+  "paths": []
+ },
+ "GCP": {
+  "aliases": [
+   "google cloud"
+  ],
+  "category": "infra",
+  "ext": [],
+  "manifest": [
+   "google-cloud"
+  ],
+  "paths": []
+ },
+ "Git": {
+  "aliases": [
+   "version control"
+  ],
+  "category": "practice",
+  "ext": [],
+  "manifest": [],
+  "paths": []
+ },
+ "Go": {
+  "aliases": [
+   "golang"
+  ],
+  "category": "language",
+  "ext": [
+   ".go"
+  ],
+  "manifest": [],
+  "paths": [
+   "go.mod"
+  ]
+ },
+ "Grafana": {
+  "aliases": [],
+  "category": "infra",
+  "ext": [],
+  "manifest": [],
+  "paths": [
+   "grafana/"
+  ]
+ },
+ "GraphQL": {
+  "aliases": [],
+  "category": "backend",
+  "ext": [
+   ".graphql",
+   ".gql"
+  ],
+  "manifest": [
+   "graphql",
+   "apollo"
+  ],
+  "paths": []
+ },
+ "HTML": {
+  "aliases": [],
+  "category": "frontend",
+  "ext": [
+   ".html",
+   ".htm"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "Java": {
+  "aliases": [],
+  "category": "language",
+  "ext": [
+   ".java"
+  ],
+  "manifest": [],
+  "paths": [
+   "pom.xml"
+  ]
+ },
+ "JavaScript": {
+  "aliases": [
+   "js",
+   "node",
+   "node.js",
+   "nodejs"
+  ],
+  "category": "language",
+  "ext": [
+   ".js",
+   ".jsx",
+   ".mjs"
+  ],
+  "manifest": [
+   "express",
+   "koa"
+  ],
+  "paths": []
+ },
+ "Kafka": {
+  "aliases": [
+   "apache kafka"
+  ],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "kafka-python",
+   "confluent-kafka",
+   "kafkajs",
+   "sarama",
+   "spring-kafka"
+  ],
+  "paths": []
+ },
+ "Kotlin": {
+  "aliases": [],
+  "category": "language",
+  "ext": [
+   ".kt",
+   ".kts"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "Kubernetes": {
+  "aliases": [
+   "k8s",
+   "kubectl",
+   "helm"
+  ],
+  "category": "infra",
+  "ext": [],
+  "manifest": [
+   "kubernetes",
+   "client-go"
+  ],
+  "paths": [
+   "k8s/",
+   "charts/",
+   "manifests/",
+   "helm/"
+  ]
+ },
+ "LLM": {
+  "aliases": [
+   "large language model",
+   "gpt",
+   "claude",
+   "prompt engineering"
+  ],
+  "category": "ml",
+  "ext": [],
+  "manifest": [
+   "openai",
+   "anthropic",
+   "transformers",
+   "vllm"
+  ],
+  "paths": []
+ },
+ "Linux": {
+  "aliases": [
+   "unix"
+  ],
+  "category": "infra",
+  "ext": [],
+  "manifest": [],
+  "paths": []
+ },
+ "Microservices": {
+  "aliases": [
+   "service oriented",
+   "distributed systems"
+  ],
+  "category": "practice",
+  "ext": [],
+  "manifest": [],
+  "paths": [
+   "services/"
+  ]
+ },
+ "MongoDB": {
+  "aliases": [
+   "mongo"
+  ],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "pymongo",
+   "mongoose",
+   "mongodb"
+  ],
+  "paths": []
+ },
+ "MySQL": {
+  "aliases": [
+   "mariadb"
+  ],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "mysql",
+   "pymysql",
+   "mysql2"
+  ],
+  "paths": []
+ },
+ "Next.js": {
+  "aliases": [
+   "nextjs"
+  ],
+  "category": "frontend",
+  "ext": [],
+  "manifest": [
+   "next"
+  ],
+  "paths": [
+   "next.config"
+  ]
+ },
+ "Nginx": {
+  "aliases": [],
+  "category": "infra",
+  "ext": [],
+  "manifest": [],
+  "paths": [
+   "nginx.conf"
+  ]
+ },
+ "NumPy": {
+  "aliases": [
+   "numpy"
+  ],
+  "category": "ml",
+  "ext": [],
+  "manifest": [
+   "numpy"
+  ],
+  "paths": []
+ },
+ "OpenTelemetry": {
+  "aliases": [
+   "otel",
+   "tracing",
+   "observability",
+   "distributed tracing"
+  ],
+  "category": "infra",
+  "ext": [],
+  "manifest": [
+   "opentelemetry",
+   "jaeger"
+  ],
+  "paths": []
+ },
+ "PHP": {
+  "aliases": [],
+  "category": "language",
+  "ext": [
+   ".php"
+  ],
+  "manifest": [
+   "laravel",
+   "symfony"
+  ],
+  "paths": []
+ },
+ "Performance Optimisation": {
+  "aliases": [
+   "performance",
+   "optimisation",
+   "optimization",
+   "profiling",
+   "latency"
+  ],
+  "category": "practice",
+  "ext": [],
+  "manifest": [],
+  "paths": [
+   "benchmarks/",
+   "bench/"
+  ]
+ },
+ "PostgreSQL": {
+  "aliases": [
+   "postgres",
+   "pg"
+  ],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "psycopg",
+   "pg",
+   "postgres",
+   "lib/pq",
+   "asyncpg"
+  ],
+  "paths": []
+ },
+ "Prometheus": {
+  "aliases": [
+   "metrics"
+  ],
+  "category": "infra",
+  "ext": [],
+  "manifest": [
+   "prometheus-client",
+   "prom-client"
+  ],
+  "paths": [
+   "prometheus.yml"
+  ]
+ },
+ "PyTorch": {
+  "aliases": [
+   "torch"
+  ],
+  "category": "ml",
+  "ext": [],
+  "manifest": [
+   "torch",
+   "pytorch-lightning"
+  ],
+  "paths": []
+ },
+ "Python": {
+  "aliases": [
+   "python3",
+   "py",
+   "cpython"
+  ],
+  "category": "language",
+  "ext": [
+   ".py",
+   ".pyi"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "RAG": {
+  "aliases": [
+   "retrieval augmented generation",
+   "vector search",
+   "embeddings"
+  ],
+  "category": "ml",
+  "ext": [],
+  "manifest": [
+   "langchain",
+   "llama-index",
+   "faiss",
+   "chromadb",
+   "pgvector",
+   "qdrant"
+  ],
+  "paths": []
+ },
+ "REST API": {
+  "aliases": [
+   "rest",
+   "restful",
+   "http api"
+  ],
+  "category": "backend",
+  "ext": [],
+  "manifest": [],
+  "paths": [
+   "api/",
+   "routes/",
+   "handlers/"
+  ]
+ },
+ "RabbitMQ": {
+  "aliases": [
+   "amqp"
+  ],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "pika",
+   "amqplib",
+   "rabbitmq"
+  ],
+  "paths": []
+ },
+ "React": {
+  "aliases": [
+   "react.js",
+   "reactjs"
+  ],
+  "category": "frontend",
+  "ext": [],
+  "manifest": [
+   "react",
+   "react-dom"
+  ],
+  "paths": []
+ },
+ "Redis": {
+  "aliases": [],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "redis",
+   "ioredis",
+   "go-redis"
+  ],
+  "paths": []
+ },
+ "Ruby": {
+  "aliases": [],
+  "category": "language",
+  "ext": [
+   ".rb"
+  ],
+  "manifest": [
+   "rails",
+   "sinatra"
+  ],
+  "paths": [
+   "gemfile"
+  ]
+ },
+ "Rust": {
+  "aliases": [],
+  "category": "language",
+  "ext": [
+   ".rs"
+  ],
+  "manifest": [],
+  "paths": [
+   "cargo.toml"
+  ]
+ },
+ "SQL": {
+  "aliases": [],
+  "category": "language",
+  "ext": [
+   ".sql"
+  ],
+  "manifest": [],
+  "paths": [
+   "migrations/"
+  ]
+ },
+ "Scala": {
+  "aliases": [],
+  "category": "language",
+  "ext": [
+   ".scala"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "Shell": {
+  "aliases": [
+   "bash",
+   "zsh",
+   "shell script"
+  ],
+  "category": "language",
+  "ext": [
+   ".sh",
+   ".bash"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "Spark": {
+  "aliases": [
+   "pyspark",
+   "apache spark"
+  ],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "pyspark",
+   "spark-core"
+  ],
+  "paths": []
+ },
+ "Spring": {
+  "aliases": [
+   "spring boot",
+   "springboot"
+  ],
+  "category": "backend",
+  "ext": [],
+  "manifest": [
+   "spring-boot-starter",
+   "springframework"
+  ],
+  "paths": []
+ },
+ "Swift": {
+  "aliases": [],
+  "category": "language",
+  "ext": [
+   ".swift"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "Tailwind CSS": {
+  "aliases": [
+   "tailwind"
+  ],
+  "category": "frontend",
+  "ext": [],
+  "manifest": [
+   "tailwindcss"
+  ],
+  "paths": []
+ },
+ "TensorFlow": {
+  "aliases": [
+   "tf",
+   "keras"
+  ],
+  "category": "ml",
+  "ext": [],
+  "manifest": [
+   "tensorflow",
+   "keras"
+  ],
+  "paths": []
+ },
+ "Terraform": {
+  "aliases": [
+   "iac",
+   "infrastructure as code"
+  ],
+  "category": "infra",
+  "ext": [
+   ".tf",
+   ".tfvars"
+  ],
+  "manifest": [],
+  "paths": []
+ },
+ "Testing": {
+  "aliases": [
+   "unit test",
+   "unit testing",
+   "pytest",
+   "jest",
+   "junit",
+   "integration test",
+   "test coverage"
+  ],
+  "category": "practice",
+  "ext": [],
+  "manifest": [
+   "pytest",
+   "jest",
+   "junit",
+   "vitest",
+   "testify"
+  ],
+  "paths": [
+   "tests/",
+   "test/",
+   "spec/",
+   "__tests__/"
+  ]
+ },
+ "TypeScript": {
+  "aliases": [
+   "ts",
+   "tsx"
+  ],
+  "category": "language",
+  "ext": [
+   ".ts",
+   ".tsx"
+  ],
+  "manifest": [],
+  "paths": [
+   "tsconfig.json"
+  ]
+ },
+ "Vue": {
+  "aliases": [
+   "vue.js",
+   "vuejs"
+  ],
+  "category": "frontend",
+  "ext": [
+   ".vue"
+  ],
+  "manifest": [
+   "vue"
+  ],
+  "paths": []
+ },
+ "WebSocket": {
+  "aliases": [
+   "websockets",
+   "socket.io"
+  ],
+  "category": "backend",
+  "ext": [],
+  "manifest": [
+   "websockets",
+   "socket.io",
+   "gorilla/websocket"
+  ],
+  "paths": []
+ },
+ "dbt": {
+  "aliases": [],
+  "category": "data",
+  "ext": [],
+  "manifest": [
+   "dbt-core"
+  ],
+  "paths": [
+   "models/"
+  ]
+ },
+ "gRPC": {
+  "aliases": [
+   "grpc",
+   "protobuf",
+   "protocol buffers"
+  ],
+  "category": "backend",
+  "ext": [
+   ".proto"
+  ],
+  "manifest": [
+   "grpcio",
+   "grpc",
+   "google.golang.org/grpc"
+  ],
+  "paths": []
+ },
+ "pandas": {
+  "aliases": [],
+  "category": "ml",
+  "ext": [],
+  "manifest": [
+   "pandas"
+  ],
+  "paths": []
+ },
+ "scikit-learn": {
+  "aliases": [
+   "sklearn"
+  ],
+  "category": "ml",
+  "ext": [],
+  "manifest": [
+   "scikit-learn"
+  ],
+  "paths": []
+ }
+}

@@ -1,0 +1,27 @@
+Job title: Junior Backend Engineer
+Company: Northwind Logistics
+
+About the role
+We run the order pipeline behind a mid-size logistics network. You will work on
+the services that accept, validate and dispatch orders.
+
+Responsibilities
+- Build and maintain HTTP APIs used by our warehouse clients
+- Keep the order ingestion path reliable under bursty traffic
+- Write tests and take part in code review
+
+Requirements
+- 0-2 years of experience, or a strong portfolio of your own projects
+- Comfortable with Python and a web framework such as FastAPI or Django
+- Working knowledge of PostgreSQL, including reading a query plan
+- You have used Docker to run services locally
+- Experience with Kafka or another message queue
+- Able to explain a bug you have fixed end to end
+
+Nice to have
+- Redis, or any caching experience
+- Kubernetes
+- Contributions to open source
+
+Benefits
+- Hybrid, 2 days in the office

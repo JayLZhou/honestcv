@@ -1,0 +1,740 @@
+{
+ "CI/CD": {
+  "commit_rhythm": {
+   "en": "Do not squash the failing run away. That red mark is the evidence.",
+   "zh": "不要把失败那次 squash 掉，那个红叉就是证据。"
+  },
+  "goal": {
+   "en": "Add CI to a repo you already own, then deliberately push a breaking change to prove the pipeline stops it.",
+   "zh": "给你自己的仓库加上 CI，然后故意推一个会坏的改动，证明流水线能拦住它。"
+  },
+  "interview_questions": [
+   {
+    "en": "What has your CI actually caught?",
+    "zh": "你的 CI 真的拦住过什么？"
+   },
+   {
+    "en": "What does your pipeline not check, and does that worry you?",
+    "zh": "你的流水线没检查什么？这件事让你担心吗？"
+   },
+   {
+    "en": "How long does it take, and what would you cut first?",
+    "zh": "它跑多久？你会先砍掉哪一步？"
+   }
+  ],
+  "milestones": [
+   {
+    "days": "1-3",
+    "deliverable": {
+     "en": ".github/workflows/ci.yml running tests.",
+     "zh": "一个跑测试的 .github/workflows/ci.yml。"
+    },
+    "focus": {
+     "en": "Run your test suite on every push.",
+     "zh": "每次 push 都跑测试套件。"
+    }
+   },
+   {
+    "days": "4-7",
+    "deliverable": {
+     "en": "A red run and its fix, both in the public history.",
+     "zh": "公开历史里一次红色运行和它的修复。"
+    },
+    "focus": {
+     "en": "Push a commit that fails on purpose; let it go red, then fix it in the next commit.",
+     "zh": "推一个故意失败的 commit，让它红掉，再用下一个 commit 修好。"
+    }
+   },
+   {
+    "days": "8-10",
+    "deliverable": {
+     "en": "Checks that fail honestly rather than being set to zero.",
+     "zh": "会诚实失败的检查，而不是把阈值设成零。"
+    },
+    "focus": {
+     "en": "Add linting and a coverage threshold that your current code actually passes.",
+     "zh": "加上 lint 和一个你当前代码确实能过的覆盖率阈值。"
+    }
+   },
+   {
+    "days": "11-14",
+    "deliverable": {
+     "en": "A README line: 4m12s to 1m05s, with the commit that did it.",
+     "zh": "README 上一行：4m12s 降到 1m05s，附上做到这件事的 commit。"
+    },
+    "focus": {
+     "en": "Cache dependencies and cut the run time; record the before and after durations.",
+     "zh": "缓存依赖，缩短运行时间；记录前后耗时。"
+    }
+   }
+  ],
+  "scope_guard": {
+   "en": "One workflow file. No matrix across five OSes before the single case works.",
+   "zh": "一个 workflow 文件。单一情况跑通之前，不要搞五种系统的矩阵。"
+  },
+  "title": {
+   "en": "A pipeline that has actually caught something",
+   "zh": "一条真的拦住过东西的流水线"
+  },
+  "why_it_proves": {
+   "en": "A green badge proves nothing. A red run in your history, followed by the fix, proves the pipeline is real.",
+   "zh": "一个绿色徽章说明不了什么。历史里一次红色运行加上后面的修复，才证明这条流水线是真的。"
+  }
+ },
+ "Kafka": {
+  "commit_rhythm": {
+   "en": "Commit at the end of every working session, even when it is broken — a note in the message saying what is broken is worth more than a tidy history.",
+   "zh": "每次坐下来写完就提交，哪怕是坏的——在 commit message 里写清楚坏在哪，比一部整齐的历史更有说服力。"
+  },
+  "goal": {
+   "en": "A producer, a consumer group and a replay tool over one topic, with at-least-once delivery you can demonstrate.",
+   "zh": "一个生产者、一个消费者组、一个重放工具，跑在同一个 topic 上，能当场演示至少一次投递。"
+  },
+  "interview_questions": [
+   {
+    "en": "What happens to in-flight messages when a consumer dies before committing its offset?",
+    "zh": "消费者在提交 offset 之前挂掉，正在处理的消息会怎样？"
+   },
+   {
+    "en": "Your consumer got the same order twice. Walk me through how you made that harmless.",
+    "zh": "你的消费者收到了同一笔订单两次，讲讲你是怎么让它不出事的。"
+   },
+   {
+    "en": "Why a consumer group instead of one consumer? What breaks when you add a partition?",
+    "zh": "为什么用消费者组而不是单个消费者？加一个 partition 会坏掉什么？"
+   }
+  ],
+  "milestones": [
+   {
+    "days": "1-3",
+    "deliverable": {
+     "en": "docker-compose.yml + a producer and consumer that print messages.",
+     "zh": "docker-compose.yml，加一个能打印消息的生产者和消费者。"
+    },
+    "focus": {
+     "en": "Run Kafka in docker-compose; produce and consume JSON order events; commit the compose file first.",
+     "zh": "用 docker-compose 起 Kafka；生产和消费 JSON 订单事件；先把 compose 文件提交上去。"
+    }
+   },
+   {
+    "days": "4-7",
+    "deliverable": {
+     "en": "A FAILURE_NOTES.md recording exactly which messages were redelivered.",
+     "zh": "一份 FAILURE_NOTES.md，写清楚哪些消息被重投了。"
+    },
+    "focus": {
+     "en": "Switch to manual offset commits. Kill the consumer mid-batch on purpose and write down what you observe.",
+     "zh": "改成手动提交 offset。故意在批处理中途 kill 掉消费者，把观察到的现象记下来。"
+    }
+   },
+   {
+    "days": "8-10",
+    "deliverable": {
+     "en": "An idempotent consumer plus a test that replays the same message twice.",
+     "zh": "一个幂等消费者，外加一个把同一条消息重放两次的测试。"
+    },
+    "focus": {
+     "en": "Make the consumer idempotent with a processed-ids table, so redelivery stops causing double writes.",
+     "zh": "用 processed-ids 表让消费者幂等，重投不再造成重复写入。"
+    }
+   },
+   {
+    "days": "11-14",
+    "deliverable": {
+     "en": "`replay --since` command and a README with one honest paragraph on guarantees.",
+     "zh": "`replay --since` 命令，以及 README 里关于投递保证的一段实话。"
+    },
+    "focus": {
+     "en": "Add a replay CLI that re-reads from a timestamp; write a README explaining the delivery guarantee you actually have.",
+     "zh": "加一个按时间戳重放的 CLI；写 README 说明你实际拿到的是什么投递保证。"
+    }
+   }
+  ],
+  "scope_guard": {
+   "en": "Do not build a UI. Do not add a second service. One topic, one consumer group, one failure mode handled well.",
+   "zh": "不要做界面，不要加第二个服务。一个 topic、一个消费者组、把一种故障处理透。"
+  },
+  "title": {
+   "en": "Order events pipeline with replay",
+   "zh": "可重放的订单事件管道"
+  },
+  "why_it_proves": {
+   "en": "Anyone can run a Kafka tutorial. Handling a consumer crash mid-batch, duplicate delivery and offset replay is what separates 'used Kafka' from 'understands Kafka'.",
+   "zh": "跑通教程谁都会。消费者在批处理中途挂掉、重复投递、offset 重放——能讲清楚这三件事，才是『懂 Kafka』而不是『用过 Kafka』。"
+  }
+ },
+ "Kubernetes": {
+  "commit_rhythm": {
+   "en": "One commit per manifest change, with the kubectl output that motivated it pasted into the message.",
+   "zh": "每改一次 manifest 就提交一次，把促使你改的那段 kubectl 输出贴进 commit message。"
+  },
+  "goal": {
+   "en": "Take a service you already wrote, run it on kind/minikube with health checks, resource limits and a rolling update.",
+   "zh": "拿一个你已经写过的服务，跑在 kind/minikube 上，配上健康检查、资源限制和滚动更新。"
+  },
+  "interview_questions": [
+   {
+    "en": "What is the difference between liveness and readiness, and what happens if you get them backwards?",
+    "zh": "liveness 和 readiness 有什么区别？如果配反了会发生什么？"
+   },
+   {
+    "en": "Your pod is CrashLoopBackOff. What are the first three commands you run?",
+    "zh": "你的 pod 进了 CrashLoopBackOff，你敲的前三条命令是什么？"
+   },
+   {
+    "en": "Why did your rolling update stall, and what would have happened in production?",
+    "zh": "你那次滚动更新为什么卡住了？如果发生在生产会怎样？"
+   }
+  ],
+  "milestones": [
+   {
+    "days": "1-3",
+    "deliverable": {
+     "en": "Dockerfile + deployment.yaml, pod reaching Running.",
+     "zh": "Dockerfile 和 deployment.yaml，pod 能进入 Running。"
+    },
+    "focus": {
+     "en": "Containerise your existing service and get it running in kind with a plain Deployment.",
+     "zh": "把你已有的服务容器化，用一个最朴素的 Deployment 跑在 kind 上。"
+    }
+   },
+   {
+    "days": "4-7",
+    "deliverable": {
+     "en": "A NOTES.md with the real `kubectl describe` output of your OOMKill.",
+     "zh": "NOTES.md 里贴上你那次 OOMKill 的真实 `kubectl describe` 输出。"
+    },
+    "focus": {
+     "en": "Add liveness/readiness probes and memory limits. Lower the limit until it gets OOMKilled, then record the event.",
+     "zh": "加上存活/就绪探针和内存限制。把限制调低直到被 OOMKilled，把事件记下来。"
+    }
+   },
+   {
+    "days": "8-10",
+    "deliverable": {
+     "en": "A recorded rollout stall and `kubectl rollout undo`.",
+     "zh": "一次被记录下来的发布卡死，以及 `kubectl rollout undo`。"
+    },
+    "focus": {
+     "en": "Do a rolling update that breaks readiness on purpose and watch the rollout stall; then fix and roll back.",
+     "zh": "做一次故意让就绪探针失败的滚动更新，看着发布卡住；然后修好并回滚。"
+    }
+   },
+   {
+    "days": "11-14",
+    "deliverable": {
+     "en": "Config split out of the image, plus an honest 'not production ready because…' section.",
+     "zh": "配置从镜像里拆出来，外加一段诚实的『还不能上生产，因为……』。"
+    },
+    "focus": {
+     "en": "Add a ConfigMap and a Secret, and write a README on what you would still need before this is production-safe.",
+     "zh": "加上 ConfigMap 和 Secret，并在 README 写清楚：要上生产还缺什么。"
+    }
+   }
+  ],
+  "scope_guard": {
+   "en": "No service mesh, no operator, no cloud account. One deployment, one service, one ingress at most.",
+   "zh": "不要 service mesh，不要 operator，不要云账号。最多一个 deployment、一个 service、一个 ingress。"
+  },
+  "title": {
+   "en": "Deploy your own service to a local cluster, then break it on purpose",
+   "zh": "把你自己的服务部署到本地集群，然后故意弄坏它"
+  },
+  "why_it_proves": {
+   "en": "Using someone else's Helm chart proves nothing. Debugging your own CrashLoopBackOff and OOMKill proves you have been there.",
+   "zh": "套别人的 Helm chart 说明不了什么。自己调通一次 CrashLoopBackOff 和 OOMKill，才说明你真待过。"
+  }
+ },
+ "OpenTelemetry": {
+  "commit_rhythm": {
+   "en": "Commit the instrumentation separately from the fix, so the history shows you measured before you touched anything.",
+   "zh": "把埋点和修复分开提交，让历史显示你是先量后动手。"
+  },
+  "goal": {
+   "en": "Instrument a service you already wrote so you can see where a slow request spends its time.",
+   "zh": "给你已经写过的服务加上埋点，让你看得见一个慢请求的时间花在哪。"
+  },
+  "interview_questions": [
+   {
+    "en": "Where did the time actually go in your slow request?",
+    "zh": "你那个慢请求的时间到底花在哪了？"
+   },
+   {
+    "en": "What is the overhead of your instrumentation?",
+    "zh": "你的埋点带来多大开销？"
+   },
+   {
+    "en": "What would you alert on, and what would you deliberately not alert on?",
+    "zh": "你会对什么告警？又刻意不对什么告警？"
+   }
+  ],
+  "milestones": [
+   {
+    "days": "1-3",
+    "deliverable": {
+     "en": "A docker-compose with the collector and your first trace.",
+     "zh": "一个带 collector 的 docker-compose 和你的第一条 trace。"
+    },
+    "focus": {
+     "en": "Run a local collector and export traces from one endpoint.",
+     "zh": "起一个本地 collector，把一个接口的 trace 导出去。"
+    }
+   },
+   {
+    "days": "4-7",
+    "deliverable": {
+     "en": "A screenshot-free note naming the slowest span and its duration.",
+     "zh": "一条不靠截图的记录，写明最慢的 span 和它的耗时。"
+    },
+    "focus": {
+     "en": "Add spans around your database and HTTP calls; find the slowest span.",
+     "zh": "在数据库和 HTTP 调用外面加 span，找出最慢的那一段。"
+    }
+   },
+   {
+    "days": "8-10",
+    "deliverable": {
+     "en": "Before/after span durations in the README.",
+     "zh": "README 里前后两次的 span 耗时。"
+    },
+    "focus": {
+     "en": "Fix or reduce that span; capture the trace again and compare.",
+     "zh": "修掉或缩短那一段；重新抓一次 trace 做对比。"
+    }
+   },
+   {
+    "days": "11-14",
+    "deliverable": {
+     "en": "An alert rule with a sentence on why that threshold.",
+     "zh": "一条告警规则，外加一句话说明为什么是这个阈值。"
+    },
+    "focus": {
+     "en": "Add one metric and one alert rule you would genuinely want paged on.",
+     "zh": "加一个指标和一条你真的愿意被半夜叫醒的告警规则。"
+    }
+   }
+  ],
+  "scope_guard": {
+   "en": "One service, one trace, a local collector. No dashboards you will never look at.",
+   "zh": "一个服务、一条链路、一个本地 collector。不要做你根本不会去看的大盘。"
+  },
+  "title": {
+   "en": "Trace one real request end to end",
+   "zh": "把一个真实请求从头到尾追一遍"
+  },
+  "why_it_proves": {
+   "en": "'Added logging' is noise. A trace that located a real bottleneck is a story with a number in it.",
+   "zh": "『加了日志』是噪音。一条定位到真实瓶颈的 trace，是一个带数字的故事。"
+  }
+ },
+ "PostgreSQL": {
+  "commit_rhythm": {
+   "en": "Commit the plan files, not screenshots. Text diffs of query plans are unusually convincing.",
+   "zh": "提交计划文本文件，不要截图。查询计划的文本 diff 格外有说服力。"
+  },
+  "goal": {
+   "en": "Load a realistic dataset, find a genuinely slow query, and fix it with an index or a rewrite you can explain.",
+   "zh": "灌入一份有规模的真实数据，找出一个真的慢的查询，用索引或改写把它修好，并且能讲清楚原因。"
+  },
+  "interview_questions": [
+   {
+    "en": "Walk me through your EXPLAIN output. Which node was the problem?",
+    "zh": "带我过一遍你的 EXPLAIN 输出，问题出在哪个节点？"
+   },
+   {
+    "en": "Why did the planner not use the index at first?",
+    "zh": "一开始优化器为什么没用上索引？"
+   },
+   {
+    "en": "What did that index cost you on writes?",
+    "zh": "这个索引在写入上让你付出了什么代价？"
+   }
+  ],
+  "milestones": [
+   {
+    "days": "1-3",
+    "deliverable": {
+     "en": "A seed script that anyone can re-run.",
+     "zh": "一个别人也能重跑的数据生成脚本。"
+    },
+    "focus": {
+     "en": "Generate a few million rows of plausible data and commit the generator.",
+     "zh": "造几百万行像样的数据，把生成脚本提交上去。"
+    }
+   },
+   {
+    "days": "4-7",
+    "deliverable": {
+     "en": "plans/before.txt committed as-is.",
+     "zh": "原样提交的 plans/before.txt。"
+    },
+    "focus": {
+     "en": "Find a query that takes seconds; save its EXPLAIN (ANALYZE, BUFFERS) output into the repo.",
+     "zh": "找一个要跑几秒的查询，把它的 EXPLAIN (ANALYZE, BUFFERS) 存进仓库。"
+    }
+   },
+   {
+    "days": "8-10",
+    "deliverable": {
+     "en": "A commit whose message names the seq scan it removed.",
+     "zh": "一次 commit，message 里点名它干掉的那个 seq scan。"
+    },
+    "focus": {
+     "en": "Fix it — index, rewrite or both — and commit plans/after.txt alongside.",
+     "zh": "修好它——加索引、改写，或者两者都来——并同时提交 plans/after.txt。"
+    }
+   },
+   {
+    "days": "11-14",
+    "deliverable": {
+     "en": "A short trade-off section in the README.",
+     "zh": "README 里一小节写清楚权衡。"
+    },
+    "focus": {
+     "en": "Show the index's cost: measure write throughput with and without it.",
+     "zh": "展示这个索引的代价：测量加与不加时的写入吞吐。"
+    }
+   }
+  ],
+  "scope_guard": {
+   "en": "One schema, one slow query, one fix. Resist adding an ORM migration framework.",
+   "zh": "一个 schema、一个慢查询、一个修复。忍住别去加 ORM 迁移框架。"
+  },
+  "title": {
+   "en": "Make one slow query fast, with the plan to prove it",
+   "zh": "把一个慢查询调快，并且拿执行计划证明"
+  },
+  "why_it_proves": {
+   "en": "'Familiar with SQL' is on every resume. An EXPLAIN ANALYZE before and after is not.",
+   "zh": "『熟悉 SQL』每份简历上都有，一前一后两张 EXPLAIN ANALYZE 没有。"
+  }
+ },
+ "React": {
+  "commit_rhythm": {
+   "en": "One commit per state you handle — the history then reads as a list of things you thought about.",
+   "zh": "每处理一种状态就提交一次——这样历史读起来就是一份『你想到了这些』的清单。"
+  },
+  "goal": {
+   "en": "Build a single real screen against a public API, and handle the four states juniors usually skip.",
+   "zh": "对着一个公开 API 做一个真实页面，把初级开发常常跳过的四种状态都处理掉。"
+  },
+  "interview_questions": [
+   {
+    "en": "Show me what your screen does on a 3G connection.",
+    "zh": "给我看看你的页面在 3G 下是什么样。"
+   },
+   {
+    "en": "Where does your data fetching live, and why there?",
+    "zh": "你的数据请求放在哪一层？为什么放那儿？"
+   },
+   {
+    "en": "What did you measure before optimising?",
+    "zh": "优化之前你量了什么？"
+   }
+  ],
+  "milestones": [
+   {
+    "days": "1-3",
+    "deliverable": {
+     "en": "A screen that renders live data.",
+     "zh": "一个能渲染实时数据的页面。"
+    },
+    "focus": {
+     "en": "Render real data from a public API, nothing else.",
+     "zh": "先把公开 API 的真实数据渲染出来，别的都先不做。"
+    }
+   },
+   {
+    "days": "4-7",
+    "deliverable": {
+     "en": "Four states, each reachable in a demo.",
+     "zh": "四种状态，每一种都能在演示中触发。"
+    },
+    "focus": {
+     "en": "Add loading, empty and error states; throttle the network in devtools and fix what breaks.",
+     "zh": "加上加载中、空、错误三种状态；在 devtools 里限速网络，把暴露出来的问题修掉。"
+    }
+   },
+   {
+    "days": "8-10",
+    "deliverable": {
+     "en": "A test that fails if the error path regresses.",
+     "zh": "一个在错误路径回退时会失败的测试。"
+    },
+    "focus": {
+     "en": "Add a test for the error state and one accessibility fix you can justify (focus, labels, contrast).",
+     "zh": "为错误状态加一个测试，再做一处你讲得出道理的无障碍修复（焦点、标签、对比度）。"
+    }
+   },
+   {
+    "days": "11-14",
+    "deliverable": {
+     "en": "Before/after profiler numbers in the README.",
+     "zh": "README 里 profiler 的前后数字。"
+    },
+    "focus": {
+     "en": "Measure and reduce one real render cost; write what you measured, not what you assume.",
+     "zh": "测量并降低一处真实的渲染开销；写你量到的，而不是你猜的。"
+    }
+   }
+  ],
+  "scope_guard": {
+   "en": "One screen. No design system, no state-management library until you can name the problem it solves.",
+   "zh": "只做一个页面。在你能说清它解决什么问题之前，不要引入设计体系和状态管理库。"
+  },
+  "title": {
+   "en": "One screen that handles loading, empty, error and slow network",
+   "zh": "一个把加载、空、错误、慢网络都处理好的页面"
+  },
+  "why_it_proves": {
+   "en": "Everyone's portfolio has a todo app that only renders the happy path. Yours will not.",
+   "zh": "每个人的作品集里都有一个只画了顺利路径的 todo app，你的不是。"
+  }
+ },
+ "Redis": {
+  "commit_rhythm": {
+   "en": "Commit the benchmark before the cache, so the history itself shows you measured first.",
+   "zh": "先提交压测脚本再提交缓存，让历史本身证明你是先量后改。"
+  },
+  "goal": {
+   "en": "Put Redis in front of one real query in a project you already have, and handle the stale-read case explicitly.",
+   "zh": "在你已有项目的某个真实查询前面加上 Redis，并且把读到脏数据这件事明确处理掉。"
+  },
+  "interview_questions": [
+   {
+    "en": "How does your cache behave the moment the underlying row changes?",
+    "zh": "底层数据刚被改掉的那一瞬间，你的缓存表现是什么？"
+   },
+   {
+    "en": "What is your TTL and why that number?",
+    "zh": "你的 TTL 是多少？为什么是这个数？"
+   },
+   {
+    "en": "Redis goes down at 3am. What does a user see?",
+    "zh": "Redis 凌晨三点挂了，用户看到的是什么？"
+   }
+  ],
+  "milestones": [
+   {
+    "days": "1-3",
+    "deliverable": {
+     "en": "A benchmark script and a recorded baseline latency.",
+     "zh": "一个压测脚本，和一个记录在案的基线延迟。"
+    },
+    "focus": {
+     "en": "Measure the uncached query first and record the number.",
+     "zh": "先测没有缓存时的查询耗时，把数字记下来。"
+    }
+   },
+   {
+    "days": "4-7",
+    "deliverable": {
+     "en": "Before/after numbers in the README, produced by the same script.",
+     "zh": "README 里写上同一脚本跑出的前后数字。"
+    },
+    "focus": {
+     "en": "Add read-through caching with a TTL; measure again with the same script.",
+     "zh": "加上带 TTL 的 read-through 缓存；用同一个脚本再测一次。"
+    }
+   },
+   {
+    "days": "8-10",
+    "deliverable": {
+     "en": "A failing-then-passing stale-read test in the history.",
+     "zh": "历史里留下一个先失败后通过的脏读测试。"
+    },
+    "focus": {
+     "en": "Write a test that updates the row and asserts the cache returns stale data; then fix it with explicit invalidation.",
+     "zh": "写一个测试：更新这行数据，断言缓存返回的是脏数据；然后用显式失效修掉它。"
+    }
+   },
+   {
+    "days": "11-14",
+    "deliverable": {
+     "en": "A connection-failure path with a test that kills the client.",
+     "zh": "一条连接失败路径，外加一个把客户端打死的测试。"
+    },
+    "focus": {
+     "en": "Handle the Redis-is-down path so the app degrades instead of erroring.",
+     "zh": "处理 Redis 挂掉的路径，让应用降级而不是报错。"
+    }
+   }
+  ],
+  "scope_guard": {
+   "en": "One cached query. Do not cache everything. Do not build a cache library.",
+   "zh": "只缓存一个查询。不要什么都缓存，更不要造一个缓存库。"
+  },
+  "title": {
+   "en": "A cache with a correct invalidation story",
+   "zh": "一个说得清失效逻辑的缓存"
+  },
+  "why_it_proves": {
+   "en": "Adding a cache is five lines. Knowing when your cache lies is the actual skill.",
+   "zh": "加缓存只要五行代码。知道缓存什么时候会骗你，才是真本事。"
+  }
+ },
+ "_generic": {
+  "commit_rhythm": {
+   "en": "Small commits, every session, with honest messages. Two weeks of real evenings looks nothing like one generated dump.",
+   "zh": "每次都小步提交，message 写实话。两周真实的晚上，和一次性生成的代码堆，长得完全不一样。"
+  },
+  "goal": {
+   "en": "Use {skill} inside a project you already have, on a task that would be harder without it.",
+   "zh": "在你已有的项目里用上 {skill}，解决一个没有它会更难办的任务。"
+  },
+  "interview_questions": [
+   {
+    "en": "Why did you reach for {skill} here? What was the alternative?",
+    "zh": "你为什么在这里用 {skill}？备选方案是什么？"
+   },
+   {
+    "en": "What went wrong the first time, and what did you change?",
+    "zh": "第一版出了什么问题？你改了什么？"
+   },
+   {
+    "en": "What did {skill} cost you — complexity, latency, operational load?",
+    "zh": "{skill} 让你付出了什么代价——复杂度、延迟，还是运维负担？"
+   }
+  ],
+  "milestones": [
+   {
+    "days": "1-3",
+    "deliverable": {
+     "en": "A running hello-world committed to your repo.",
+     "zh": "仓库里一个跑得起来的 hello-world。"
+    },
+    "focus": {
+     "en": "Read the official {skill} docs and get the smallest thing running; commit it even if it is ugly.",
+     "zh": "读 {skill} 官方文档，把最小的东西跑起来；哪怕很丑也先提交。"
+    }
+   },
+   {
+    "days": "4-7",
+    "deliverable": {
+     "en": "Both paths working, selectable by a flag.",
+     "zh": "两条路径都能跑，用一个开关切换。"
+    },
+    "focus": {
+     "en": "Replace one part of your existing project with {skill}; keep the old path for comparison.",
+     "zh": "用 {skill} 替换你现有项目的一部分；保留旧路径用于对比。"
+    }
+   },
+   {
+    "days": "8-10",
+    "deliverable": {
+     "en": "A FAILURE_NOTES.md with real output.",
+     "zh": "一份带真实输出的 FAILURE_NOTES.md。"
+    },
+    "focus": {
+     "en": "Break it on purpose and handle the failure; write down what you saw.",
+     "zh": "故意把它弄坏并处理故障；把你看到的写下来。"
+    }
+   },
+   {
+    "days": "11-14",
+    "deliverable": {
+     "en": "A README with numbers and a trade-off paragraph.",
+     "zh": "一份有数字、有权衡段落的 README。"
+    },
+    "focus": {
+     "en": "Measure the difference and write an honest README: what {skill} bought you, and what it cost.",
+     "zh": "测量差异，写一份诚实的 README：{skill} 给你带来了什么，又让你付出了什么。"
+    }
+   }
+  ],
+  "scope_guard": {
+   "en": "Two weeks, evenings only. If it needs a team, it is the wrong project.",
+   "zh": "两周，只用晚上。如果它需要一个团队，那就选错项目了。"
+  },
+  "title": {
+   "en": "Smallest honest project that uses {skill} for something real",
+   "zh": "用 {skill} 做一件真事的最小诚实项目"
+  },
+  "why_it_proves": {
+   "en": "A standalone demo of {skill} looks like every tutorial. {skill} wired into your own code does not.",
+   "zh": "一个孤立的 {skill} demo 跟所有教程长得一样；{skill} 接进你自己的代码里就不一样了。"
+  }
+ },
+ "gRPC": {
+  "commit_rhythm": {
+   "en": "Keep generated code out of the history or in a single clearly-named commit, so your own work stays visible.",
+   "zh": "把生成代码排除在历史之外，或者放进一次明确命名的提交，让你自己写的部分依然看得见。"
+  },
+  "goal": {
+   "en": "Define a .proto for an endpoint you already have, generate both sides, and compare the two under load.",
+   "zh": "为你已有的一个接口写 .proto，生成客户端和服务端，然后在压力下对比两者。"
+  },
+  "interview_questions": [
+   {
+    "en": "Why gRPC here instead of REST? Give me the number that convinced you.",
+    "zh": "这里为什么用 gRPC 而不是 REST？给我那个说服了你的数字。"
+   },
+   {
+    "en": "What breaks for a browser client, and how would you deal with it?",
+    "zh": "浏览器客户端会坏在哪？你打算怎么办？"
+   },
+   {
+    "en": "How do you evolve a .proto without breaking old clients?",
+    "zh": "怎么演进 .proto 才不会打断老客户端？"
+   }
+  ],
+  "milestones": [
+   {
+    "days": "1-3",
+    "deliverable": {
+     "en": "A .proto file and a generated-code build step.",
+     "zh": "一个 .proto 文件和一个生成代码的构建步骤。"
+    },
+    "focus": {
+     "en": "Write the .proto and generate stubs; commit the proto before any implementation.",
+     "zh": "写 .proto 并生成桩代码；在写实现之前先提交 proto。"
+    }
+   },
+   {
+    "days": "4-7",
+    "deliverable": {
+     "en": "Both paths serving the same data.",
+     "zh": "两条路径返回同样的数据。"
+    },
+    "focus": {
+     "en": "Implement the server and a client; keep the REST route alive side by side.",
+     "zh": "实现服务端和客户端；让 REST 路由并行保留。"
+    }
+   },
+   {
+    "days": "8-10",
+    "deliverable": {
+     "en": "A benchmark table in the README with the script that produced it.",
+     "zh": "README 里一张压测表格，附上生成它的脚本。"
+    },
+    "focus": {
+     "en": "Benchmark both with the same payloads; record latency and payload size.",
+     "zh": "用相同的 payload 压测两者，记录延迟和报文大小。"
+    }
+   },
+   {
+    "days": "11-14",
+    "deliverable": {
+     "en": "A streaming RPC plus an honest recommendation.",
+     "zh": "一个流式 RPC，外加一条诚实的结论。"
+    },
+    "focus": {
+     "en": "Add a streaming RPC and write down which of your two endpoints you would actually ship, and why.",
+     "zh": "加一个流式 RPC，并写下你真正会上线的是哪一个、为什么。"
+    }
+   }
+  ],
+  "scope_guard": {
+   "en": "One service, two or three RPCs. No gateway, no mesh.",
+   "zh": "一个服务，两三个 RPC。不要网关，不要 mesh。"
+  },
+  "title": {
+   "en": "Replace one REST endpoint with gRPC and keep both running",
+   "zh": "把一个 REST 接口换成 gRPC，并让两者同时在线"
+  },
+  "why_it_proves": {
+   "en": "The interview question is always 'why not REST?'. You can only answer it if you have run both.",
+   "zh": "面试官永远问『为什么不用 REST？』——只有两种都跑过，你才答得上来。"
+  }
+ }
+}

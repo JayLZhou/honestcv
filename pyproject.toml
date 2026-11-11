@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "honestcv"
+version = "0.1.0"
+description = "Turn the evidence you already have into a resume a recruiter can check, line by line."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "JayLZhou" }]
+keywords = ["resume", "cv", "job-search", "git", "evidence", "interview"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Utilities",
+]
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+honestcv = "honestcv.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/JayLZhou/honestcv"
+Issues = "https://github.com/JayLZhou/honestcv/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+honestcv = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

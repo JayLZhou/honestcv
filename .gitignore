@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store
+.idea/
+.vscode/
+
+# A fact base is personal data: never commit one by accident.
+honestcv.json
+*.trace.json
+resume.md
+letter.md
+plan.md
+practice.md
+answers.json
+!examples/**
