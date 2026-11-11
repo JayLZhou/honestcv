@@ -205,9 +205,11 @@ def terminal() -> str:
     body = [l for l in CAST]
     height = top + line_h * len(body) + 34
     width = 940
-    step = 0.46          # seconds between lines
-    hold = 4.0           # seconds the finished screen stays up
-    total = round(0.6 + step * len(body) + hold, 2)
+    # It plays once and holds the finished screen. A looping cast means anyone who
+    # lands mid-cycle sees an empty black rectangle, which is a bad first frame for
+    # the thing the README is built around.
+    step = 0.4           # seconds between lines
+    total = round(0.6 + step * len(body), 2)
 
     colours = {"cmd": p["text"], "out": p["muted"], "ok": p["green"],
                "bad": p["red"], "dim": p["muted"], "gap": p["muted"]}
@@ -217,9 +219,9 @@ def terminal() -> str:
     for i in range(len(body)):
         start = (0.6 + i * step) / total * 100
         css.append("@keyframes a%d{0%%,%.3f%%{opacity:0;transform:translateY(3px)}"
-                   "%.3f%%,96%%{opacity:1;transform:translateY(0)}100%%{opacity:0}}"
-                   % (i, start, min(start + 1.2, 96)))
-        css.append(".l%d{animation:a%d %ss linear infinite}" % (i, i, total))
+                   "%.3f%%,100%%{opacity:1;transform:translateY(0)}}"
+                   % (i, start, min(start + 1.6, 100)))
+        css.append(".l%d{animation:a%d %ss linear 1 forwards}" % (i, i, total))
     css.append("@keyframes blink{0%,45%{opacity:1}50%,100%{opacity:0}}")
     css.append(".cur{animation:blink 1s steps(1) infinite}")
 
