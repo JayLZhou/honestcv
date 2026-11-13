@@ -20,6 +20,11 @@ from typing import Dict, List, Optional
 
 from .git_miner import GENERIC_SUBJECTS, GitError, _git, classify, clean_subject, read_commits
 
+def _plural(count: int, word: str) -> str:
+    """"1 days" in a report about rigour is a bad look."""
+    return "%d %s%s" % (count, word, "" if count == 1 else "s")
+
+
 TEST_PATH = re.compile(r"(^|/)(tests?|spec|__tests__)/|_test\.|\.test\.|test_.*\.py$", re.IGNORECASE)
 
 
@@ -113,19 +118,19 @@ def audit_repo(repo: str, author: Optional[str] = None, since: Optional[str] = N
 
     # --- shape of the history over time ---
     report.signals.append(Signal(
-        "span", "Time span", "时间跨度", "%d days" % span,
+        "span", "Time span", "时间跨度", _plural(span, "day"),
         min(1.0, span / 21.0), 1.2,
         "Real work accumulates. Spread the remaining work over more sessions instead of one long sprint.",
         "真实的工作是攒出来的。把剩下的活分散到更多次坐下来做，而不是一口气冲完。",
     ))
     report.signals.append(Signal(
-        "active_days", "Days with commits", "有提交的天数", "%d days" % active_days,
+        "active_days", "Days with commits", "有提交的天数", _plural(active_days, "day"),
         min(1.0, active_days / 12.0), 1.5,
         "Commit at the end of each session, even when the work is unfinished.",
         "每次做完一段就提交，哪怕还没做完。",
     ))
     report.signals.append(Signal(
-        "volume", "Commit count", "提交数量", "%d commits" % len(commits),
+        "volume", "Commit count", "提交数量", _plural(len(commits), "commit"),
         min(1.0, len(commits) / 40.0), 1.0,
         "Smaller commits, one idea each, make the work readable.",
         "把提交拆小，一次一个意图，工作才读得出来。",
@@ -190,7 +195,7 @@ def audit_repo(repo: str, author: Optional[str] = None, since: Optional[str] = N
     if hours:
         spread = len(set(hours))
         report.signals.append(Signal(
-            "rhythm", "Distinct commit hours", "提交时段分布", "%d distinct hours" % spread,
+            "rhythm", "Distinct commit hours", "提交时段分布", "%s" % _plural(spread, "distinct hour"),
             min(1.0, spread / 8.0), 0.6,
             "Everything landing inside one hour reads as a single session, whatever the dates say.",
             "全部集中在一个小时之内，不管日期怎么写，读起来都是一次性完成的。",
@@ -238,7 +243,8 @@ def render_audit(report: AuditReport, lang: str = "zh") -> str:
     lines.append("**%s**: `%s`  " % ("仓库" if zh else "Repository", report.repo))
     lines.append("**%s**: %s  " % ("作者" if zh else "Author", report.author))
     lines.append("**%s**: %d/100 (%d %s)" % (
-        "得分" if zh else "Score", report.score, report.commits, "次提交" if zh else "commits"))
+        "得分" if zh else "Score", report.score, report.commits,
+        "次提交" if zh else ("commit" if report.commits == 1 else "commits")))
     lines.append("")
     if zh:
         lines.append("> 这个分数衡量的是**你的工作对审阅者有多可读**，不是你有没有作弊。")

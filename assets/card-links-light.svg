@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" width="440" height="300" role="img" aria-label="a resume line opening the commit behind it">
+<style>text{font-variant-ligatures:none}</style>
+<rect x="1" y="1" width="438" height="298" rx="16" fill="#ffffff" stroke="#d8dee4"/>
+<rect x="28" y="28" width="384" height="56" rx="12" fill="#f6f8fa" stroke="#1a7f37" stroke-width="1.5"/>
+<rect x="50" y="50" width="212" height="10" rx="5.0" fill="#d8dee4"/>
+<rect x="286" y="44" width="106" height="24" rx="12.0" fill="#dafbe1"/><text x="298" y="60.0" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="400" text-anchor="start" fill="#1a7f37" xml:space="preserve">✓ c9f62bf</text>
+<path d="M 330 92 q 0 24 -40 28" fill="none" stroke="#636c76" stroke-width="2" stroke-dasharray="4 4"/>
+<rect x="70" y="118" width="300" height="152" rx="10" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1"/>
+<rect x="70" y="118" width="300" height="28" rx="10" fill="#d8dee4"/>
+<rect x="70" y="136" width="300" height="10" fill="#d8dee4"/>
+<circle cx="86" cy="132" r="4" fill="#ff5f57"/>
+<circle cx="100" cy="132" r="4" fill="#febc2e"/>
+<circle cx="114" cy="132" r="4" fill="#28c840"/>
+<text x="220" y="136" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="9" font-weight="400" text-anchor="middle" fill="#636c76" xml:space="preserve">github.com/…/commit/c9f62bf</text>
+<rect x="86" y="162" width="268" height="20" rx="4" fill="#dafbe1"/>
+<text x="96" y="176" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="400" text-anchor="start" fill="#1a7f37" xml:space="preserve">+    for _ in range(retries):</text>
+<rect x="86" y="188" width="268" height="20" rx="4" fill="#ffebe9"/>
+<text x="96" y="202" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="400" text-anchor="start" fill="#cf222e" xml:space="preserve">-    publish(order)</text>
+<text x="96" y="232" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="400" text-anchor="start" fill="#636c76" xml:space="preserve">src/dispatch/queue.py</text>
+<text x="96" y="252" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="400" text-anchor="start" fill="#636c76" xml:space="preserve">2026-03-10</text>
+</svg>

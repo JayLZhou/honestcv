@@ -27,3 +27,9 @@ def test_weak_signals_come_with_advice(dump_repo):
     weak = report.weak_signals()
     assert weak
     assert all(s.advice("zh") and s.advice("en") for s in weak)
+
+
+def test_counts_read_naturally_in_a_report_about_rigour(dump_repo):
+    text = render_audit(audit_repo(dump_repo), "en")
+    assert "1 day" in text and "1 days" not in text
+    assert "1 commit" in text and "1 commits" not in text
