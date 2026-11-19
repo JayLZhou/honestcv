@@ -44,6 +44,7 @@ honestcv reads the evidence you already produced and makes it legible:
 | You bring | honestcv uses it for |
 | :-- | :-- |
 | any **git** repository — GitHub, GitLab, or purely local | mining facts; public hosts also get clickable evidence links |
+| **just a folder of code**, no history at all | `honestcv scan` — counted from the files, and marked as the weaker evidence it is |
 | a **job description** pasted into a text file | per-requirement coverage, ordering, and the gap list |
 | **what only you know** (first version failed, you were alone on it) | a guided interview, stored and rendered as *self-reported* |
 | *(optional)* an **Anthropic API key** | nicer wording — re-verified, discarded if it drifts |
@@ -143,6 +144,48 @@ That last exit code is the product. Everything else in this repo is how it gets 
   </tr>
 </table>
 
+<a id="no-history"></a>
+
+### 📂 No commit history? Scan the code instead.
+
+Bootcamp projects arrive as a folder. Coursework arrives as a zip. Somebody else ran `git init`
+and committed the finished thing in one go. The evidence is still there — it just has no timeline.
+
+```console
+$ honestcv audit ~/code/handed-over-project
+**There is no git history here.** This is not a low score; it is a thing that cannot be scored.
+
+## What a reviewer cannot see
+- **Who wrote it.** Files carry no author.
+- **When.** No timeline means no "three weeks of evenings" story.
+- **How it grew.** No rework, no fixes, no trace of a first version that broke.
+
+$ honestcv scan ~/code/handed-over-project
+Scanned …: 6 source files, 36 lines (Python 24)
+9 facts recorded, 9 new.
+
+Note: these facts come from files, not commits.
+```
+
+`scan` counts what is genuinely in the code — HTTP endpoints, data models, test functions, the
+technologies the imports and manifests prove, how much of each language — and records every one
+with the file, and the line, it came from. Pass `--repo-url` and those file references become
+clickable too.
+
+What it will not do is pretend files are as good as commits:
+
+| | from `mine` | from `scan` |
+| :-- | :-- | :-- |
+| evidence kind | `commit` | `file` |
+| strength in the model | 0.9 | 0.5 |
+| where it lands in the resume | main section, linked | its own section, under a caveat |
+| `verify` | passes clean | `weak_evidence` on every line — and `--strict` fails |
+| shows who wrote it | the history does | **nothing here can** |
+
+Then the audit says how to climb out: start committing today — an initial commit dated today is
+honest, a history backdated to look like months of work is not, and the audit recognises that
+shape anyway — and answer the interview questions, so the part only you know is on the record.
+
 <a id="toc"></a>
 
 ## 📋 Table of Contents
@@ -150,6 +193,7 @@ That last exit code is the product. Everything else in this repo is how it gets 
 - [🎯 Why honestcv?](#why)
 - [👀 Watch It Reject a Lie](#watch)
 - [✨ Key Features](#features)
+  - [📂 No commit history? Scan the code instead.](#no-history)
 - [🚀 Quick Start](#quick-start)
 - [🧩 How It Works](#how-it-works)
   - [Challenge 1: The reviewer assumes you generated it](#challenge-1)
@@ -177,8 +221,9 @@ pip install -e .
 
 ```bash
 honestcv init --name "Your Name" --email you@example.com
-honestcv --lang en mine ~/code/your-project
-honestcv --lang en audit ~/code/your-project     # how legible is this history to a reviewer?
+honestcv --lang en mine ~/code/your-project      # a repository with history
+honestcv --lang en scan ~/code/handed-over-dir   # …or a folder that has none
+honestcv --lang en audit ~/code/your-project     # how legible is this to a reviewer?
 ```
 
 ### ③ Aim at one job
@@ -330,6 +375,7 @@ the shape of a real side project. Every number below is reproducible with `bash 
 | `resume` | **21 claims**, every one traced — `PASS (0 errors, 0 warnings)` |
 | `plan` | a 14-day Kafka-style project for the gap, day by day |
 | one invented line appended by hand | `FAIL … ✗ untraced_claim`, **exit code 1** |
+| the same project **with `.git` deleted** | `scan` → **9 facts** from files; `verify` passes but raises **weak_evidence on every line**, and `--strict` fails |
 
 And on a repository that arrived as a single commit:
 
@@ -355,6 +401,7 @@ And on a repository that arrived as a single commit:
 | :-- | :-- |
 | `honestcv init` | start a fact base |
 | `honestcv mine <repo>` | git history → facts (re-mining replaces, never duplicates) |
+| `honestcv scan <dir>` | source code → facts when there is no history; `--repo-url` makes them clickable |
 | `honestcv audit <repo>` | evidence-strength audit, `--json` for scripts |
 | `honestcv questions [--jd]` | what code cannot answer; `--template` writes a blank answer sheet |
 | `honestcv interview [--answers f]` | record answers as self-reported facts, or ask them in the terminal |
@@ -407,6 +454,7 @@ honestcv/
 │   ├── grounding.py         🔒 Trace + verify: the six checks, run after every render
 │   ├── mining/
 │   │   ├── git_miner.py     📥 commits → facts, with every number counted
+│   │   ├── code_scanner.py  📥 source code → facts, for work with no history behind it
 │   │   └── authenticity.py  📥 evidence-strength audit, and what it refuses to claim
 │   ├── jd.py                📥 job description → requirements (must / nice / unreadable)
 │   ├── matcher.py           🧠 covered / gap / unread, kept strictly apart
@@ -419,7 +467,7 @@ honestcv/
 │   ├── llm.py               📤 optional polish, re-verified and discarded if it drifts
 │   ├── cli.py               🧭 the command line
 │   └── data/                skills.json · templates.json · gap_projects.json
-├── tests/                   92 tests — no network, no API key
+├── tests/                   110 tests — no network, no API key
 ├── examples/                fixture repo builder, two JDs, the end-to-end demo
 └── assets/make_assets.py    🎨 generates every image in this README
 ```
@@ -449,7 +497,7 @@ honestcv/
 
 ```bash
 pip install -e ".[dev]"
-pytest -q                      # 92 tests, no network, no API key
+pytest -q                      # 110 tests, no network, no API key
 bash examples/demo.sh          # the end-to-end path, also run in CI
 python3 assets/make_assets.py  # regenerate every image above
 ```

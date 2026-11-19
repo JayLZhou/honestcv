@@ -8,6 +8,30 @@
    "en": "Fixed {commits} defects in {area} of {repo}, including: {subject}",
    "zh": "在 {repo} 的 {area} 模块修复了 {commits} 个缺陷，其中包括：{subject}"
   },
+  "code_endpoints": {
+   "en": "Implemented {count} HTTP endpoints in {project}, across {files} files",
+   "zh": "在 {project} 中实现了 {count} 个 HTTP 接口，分布在 {files} 个文件里"
+  },
+  "code_models": {
+   "en": "Defined {count} data models in {project} ({files} files)",
+   "zh": "在 {project} 中定义了 {count} 个数据模型（{files} 个文件）"
+  },
+  "code_module": {
+   "en": "Built the {area} module of {project} ({files} files, {lines} lines)",
+   "zh": "开发了 {project} 的 {area} 模块（{files} 个文件，{lines} 行代码）"
+  },
+  "code_project": {
+   "en": "Built {project}: {files} files, {lines} lines of {languages}",
+   "zh": "开发了 {project}：{files} 个文件、{lines} 行 {languages} 代码"
+  },
+  "code_tech": {
+   "en": "Used {tech} in {project} (see {file})",
+   "zh": "在 {project} 中用到了 {tech}（见 {file}）"
+  },
+  "code_tests": {
+   "en": "Wrote {count} test functions across {files} test files in {project}",
+   "zh": "为 {project} 写了 {count} 个测试函数，分布在 {files} 个测试文件里"
+  },
   "credential": {
    "en": "{title} ({issuer}, {date})",
    "zh": "{title}（{issuer}，{date}）"
@@ -58,6 +82,14 @@
   }
  },
  "ui": {
+  "code_caveat": {
+   "en": "Counted from the files named above. Files cannot show who wrote them or when; ask me to walk you through any of it.",
+   "zh": "以上数字是从列出的文件里数出来的。文件无法证明是谁写的、什么时候写的——随时可以让我当场讲任何一段。"
+  },
+  "code_section": {
+   "en": "From the code itself — no commit history behind these",
+   "zh": "直接来自代码 —— 这些背后没有提交历史"
+  },
   "coverage": {
    "en": "Coverage",
    "zh": "匹配度"

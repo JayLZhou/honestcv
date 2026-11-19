@@ -42,6 +42,7 @@ honestcv 做的是把你已经产出的证据变得可读：
 | 你有的 | honestcv 拿它做什么 |
 | :-- | :-- |
 | 任意 **git** 仓库 —— GitHub、GitLab，或者纯本地 | 挖事实；公开托管的还会生成可点击的证据链接 |
+| **只有一个代码文件夹**，完全没有历史 | `honestcv scan` —— 从文件里数出来，并明确标成更弱的那类证据 |
 | 一份贴进文本文件的 **JD** | 逐条要求的覆盖情况、排序，以及缺口清单 |
 | **只有你知道的事**（第一版怎么崩的、是不是一个人做的） | 引导式问答，存下来并永远标记为「自述」 |
 | *（可选）* 一个 **Anthropic API key** | 措辞更自然——改写后会被重新验证，跑偏就丢掉 |
@@ -141,6 +142,47 @@ honestcv 做的是把你已经产出的证据变得可读：
   </tr>
 </table>
 
+<a id="no-history"></a>
+
+### 📂 没有提交历史？那就直接读代码。
+
+培训班的项目是一个文件夹，课程作业是一个压缩包，还有的是别人 `git init` 之后一口气把成品提交进去的。
+证据其实都在，只是没有时间线。
+
+```console
+$ honestcv audit ~/code/handed-over-project
+**这里没有 git 历史。** 不是分数低，是这一项根本无法评分。
+
+## 审阅者看不见的
+- **是谁写的。** 文件里没有作者。
+- **什么时候写的。** 没有时间线，也就没有『两周的晚上』这个故事。
+- **怎么长出来的。** 没有返工、没有修复、没有第一版崩掉的痕迹。
+
+$ honestcv scan ~/code/handed-over-project
+Scanned …: 6 source files, 36 lines (Python 24)
+9 facts recorded, 9 new.
+
+注意：这些事实来自文件，不是 commit。
+```
+
+`scan` 把代码里真正存在的东西数出来——HTTP 接口、数据模型、测试函数、import 和依赖清单能证明的
+技术栈、各语言各多少行——每一条都记下它来自哪个文件、哪一行。加上 `--repo-url`，这些文件引用也会
+变成可点击的链接。
+
+它唯一不会做的，就是假装文件和 commit 一样硬：
+
+| | 来自 `mine` | 来自 `scan` |
+| :-- | :-- | :-- |
+| 证据类型 | `commit` | `file` |
+| 模型里的强度 | 0.9 | 0.5 |
+| 在简历里的位置 | 正文区，带链接 | 单独一节，下面跟一句免责说明 |
+| `verify` | 干净通过 | 每一条都报 `weak_evidence`，`--strict` 直接失败 |
+| 能否证明是谁写的 | 历史可以 | **这里没有任何东西可以** |
+
+然后体检报告会告诉你怎么往上爬：从今天开始提交——今天建仓库、今天第一个 commit，这是诚实的；
+把历史伪造成几个月的样子不是，而且体检一眼就能认出那个形状——再把只有你知道的部分用
+`honestcv interview` 记下来。
+
 <a id="toc"></a>
 
 ## 📋 目录
@@ -148,6 +190,7 @@ honestcv 做的是把你已经产出的证据变得可读：
 - [🎯 为什么要有 honestcv？](#why)
 - [👀 看它当场拒绝一句假话](#watch)
 - [✨ 核心能力](#features)
+  - [📂 没有提交历史？那就直接读代码。](#no-history)
 - [🚀 快速上手](#quick-start)
 - [🧩 它怎么做到的](#how-it-works)
   - [难题一：审阅者默认你的项目是生成的](#challenge-1)
@@ -175,8 +218,9 @@ pip install -e .
 
 ```bash
 honestcv init --name "你的名字" --email you@example.com
-honestcv mine ~/code/your-project
-honestcv audit ~/code/your-project     # 这段历史在审阅者眼里有多可读？
+honestcv mine ~/code/your-project       # 有历史的仓库
+honestcv scan ~/code/handed-over-dir    # …或者一个没有历史的文件夹
+honestcv audit ~/code/your-project      # 这些东西在审阅者眼里有多可读？
 ```
 
 ### ③ 对准一个岗位
@@ -316,6 +360,7 @@ $ honestcv audit ~/code/dumped-project
 | `resume` | **21 条声明**全部可追溯 —— `PASS (0 errors, 0 warnings)` |
 | `plan` | 为缺口生成一个 14 天、按天排的项目方案 |
 | 手工加一句编造的 bullet | `FAIL … ✗ untraced_claim`，**退出码 1** |
+| 同一个项目**删掉 `.git`** | `scan` 从文件里拿到 **9 条事实**；`verify` 能过，但**每一条都报 weak_evidence**，`--strict` 直接失败 |
 
 再看一个"一次性倒进来"的仓库：
 
@@ -341,6 +386,7 @@ $ honestcv audit ~/code/dumped-project
 | :-- | :-- |
 | `honestcv init` | 建一个空的事实库 |
 | `honestcv mine <repo>` | git 历史 → 事实（重挖同一个仓库会覆盖，不会重复累积） |
+| `honestcv scan <dir>` | 源码 → 事实，适用于没有历史的代码；`--repo-url` 能让引用变成链接 |
 | `honestcv audit <repo>` | 证据强度体检，`--json` 供脚本使用 |
 | `honestcv questions [--jd]` | 代码回答不了的问题；`--template` 写一份空白答卷 |
 | `honestcv interview [--answers f]` | 把回答记成「自述」事实；不加参数就在终端里一问一答 |
@@ -391,6 +437,7 @@ honestcv/
 │   ├── grounding.py         🔒 Trace 与 verify：六道检查，每次渲染后都跑
 │   ├── mining/
 │   │   ├── git_miner.py     📥 commit → 事实，每个数字都是数出来的
+│   │   ├── code_scanner.py  📥 源码 → 事实，给没有历史的工作用
 │   │   └── authenticity.py  📥 证据强度体检，以及它拒绝声称的东西
 │   ├── jd.py                📥 JD → 要求（硬性 / 加分 / 读不懂）
 │   ├── matcher.py           🧠 已覆盖 / 缺口 / 读不懂，三者严格分开
@@ -403,7 +450,7 @@ honestcv/
 │   ├── llm.py               📤 可选润色，重新验证，跑偏就丢
 │   ├── cli.py               🧭 命令行
 │   └── data/                skills.json · templates.json · gap_projects.json
-├── tests/                   92 个测试 —— 不需要网络，不需要 API key
+├── tests/                   110 个测试 —— 不需要网络，不需要 API key
 ├── examples/                示例仓库生成器、两份 JD、端到端 demo
 └── assets/make_assets.py    🎨 生成 README 里的每一张图
 ```
@@ -431,7 +478,7 @@ honestcv/
 
 ```bash
 pip install -e ".[dev]"
-pytest -q                      # 92 个测试，不需要网络，不需要 API key
+pytest -q                      # 110 个测试，不需要网络，不需要 API key
 bash examples/demo.sh          # 端到端链路，CI 里也会跑
 python3 assets/make_assets.py  # 重新生成上面所有插图
 ```

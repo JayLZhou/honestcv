@@ -79,3 +79,36 @@ def test_audit_is_readable_and_machine_readable(workspace, demo_repo, capsys):
 def test_facts_listing(workspace, capsys):
     assert main(["facts", "--skill", "Kafka"]) == 0
     assert "Kafka" in capsys.readouterr().out
+
+
+def test_scanning_code_without_history(tmp_path, monkeypatch, demo_repo, capsys):
+    import shutil
+    target = tmp_path / "orders"
+    shutil.copytree(demo_repo, target)
+    shutil.rmtree(target / ".git")
+    monkeypatch.chdir(tmp_path)
+    assert main(["init", "--name", "Demo"]) == 0
+
+    # audit on a directory with no history reports, rather than failing
+    assert main(["--lang", "en", "audit", str(target)]) == 0
+    assert "no git history here" in capsys.readouterr().out
+
+    assert main(["--lang", "en", "scan", str(target)]) == 0
+    out = capsys.readouterr().out
+    assert "come from files, not commits" in out
+
+    from honestcv.models import FactBase
+    before = len(FactBase.load("honestcv.json").facts)
+    main(["--lang", "en", "scan", str(target)])          # re-scanning replaces
+    assert len(FactBase.load("honestcv.json").facts) == before
+
+    assert main(["--lang", "en", "resume", "-o", "cv.md"]) == 0
+    assert main(["--lang", "en", "verify", "cv.md"]) == 0          # warnings only
+    assert main(["--lang", "en", "verify", "cv.md", "--strict"]) == 1
+
+
+def test_scanning_an_empty_directory(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    main(["init", "--name", "Demo"])
+    (tmp_path / "empty").mkdir()
+    assert main(["scan", str(tmp_path / "empty")]) == 1

@@ -226,10 +226,17 @@ def verify(document: str, trace: Trace, factbase: FactBase, doc_name: str = "") 
                     "%s is claimed here but this fact does not demonstrate it." % skill, primary.id))
 
         has_link = bool(MD_LINK.search(raw))
-        if not has_link and primary.source != "interview" and primary.evidence:
+        linkable = any(e.url for f in facts for e in f.evidence)
+        if not has_link and linkable:
             report.violations.append(Violation(
                 "warning", "missing_link", line,
                 "This claim has evidence but no clickable link; a reviewer cannot check it.", primary.id))
+        kinds = {e.kind for f in facts for e in f.evidence}
+        if kinds and kinds <= {"file"}:
+            report.violations.append(Violation(
+                "warning", "weak_evidence", line,
+                "This rests on files, not commits: it shows the code exists, not that you "
+                "wrote it or when.", primary.id))
         if primary.source == "interview" and kind == "claim":
             if "self_report" not in [e.kind for e in primary.evidence]:
                 report.violations.append(Violation(
@@ -271,11 +278,21 @@ def render_report(report: Report, lang: str = "zh") -> str:
         report.checked_lines, "条声明" if zh else "claims checked",
         len(report.errors), "个错误" if zh else "errors",
         len(report.warnings), "个警告" if zh else "warnings"))
+    shown: Dict[str, int] = {}
     for v in report.violations:
+        seen = shown.get(v.code, 0)
+        shown[v.code] = seen + 1
+        if seen >= 3:
+            continue       # the fourth identical warning teaches nobody anything
         marker = "✗" if v.severity == "error" else "!"
         lines.append("  %s [%s] %s" % (marker, v.code, v.line[:100]))
         if v.detail:
             lines.append("      %s" % v.detail)
+    for code, count in shown.items():
+        if count > 3:
+            lines.append("  … %s%d %s [%s]" % (
+                "另有 " if zh else "and ", count - 3,
+                "条同样的" if zh else "more of the same", code))
     if not report.violations:
         lines.append("  " + ("每一条都能追溯到证据。" if zh else "Every claim traces back to evidence."))
     return "\n".join(lines) + "\n"

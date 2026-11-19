@@ -2,6 +2,7 @@
 
     honestcv init                      start a fact base
     honestcv mine <repo>               git history  -> facts
+    honestcv scan <dir>                source code  -> facts, when there is no history
     honestcv audit <repo>              how legible is this history to a reviewer
     honestcv questions                 what the code cannot tell us
     honestcv interview                 answers -> facts (clearly self-reported)
@@ -28,8 +29,8 @@ from .interview import (facts_from_answers, load_answers, questions, run_interac
                         write_template)
 from .jd import load_jd
 from .matcher import match, render_match
-from .mining import GitError, list_authors, mine_repo
-from .mining.authenticity import audit_repo, render_audit
+from .mining import GitError, list_authors, mine_repo, scan_code, scan_tree, summarise
+from .mining.authenticity import audit_repo, render_audit, render_no_history
 from .models import FactBase, Person
 from .practice import render_practice
 from .render import render_cover_letter, render_plan, render_resume
@@ -106,11 +107,50 @@ def cmd_mine(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_scan(args: argparse.Namespace) -> int:
+    fb = _load(args.file)
+    try:
+        result = scan_tree(args.path)
+    except (NotADirectoryError, OSError) as exc:
+        print("%s" % exc, file=sys.stderr)
+        return 2
+    facts = scan_code(args.path, project=args.project, lang=args.lang,
+                      repo_url=args.repo_url or "", branch=args.branch)
+    if not facts:
+        print("No source code found under %s." % args.path)
+        return 1
+    project = facts[0].payload.get("project", "")
+    fb.drop_source("code", repo=project)
+    added = fb.extend(facts)
+    fb.save(args.file)
+    zh = args.lang == "zh"
+    print("Scanned %s: %s" % (args.path, summarise(result, args.lang)))
+    print("%d facts recorded, %d new." % (len(facts), added))
+    print("")
+    if zh:
+        print("注意：这些事实来自文件，不是 commit。")
+        print("文件证明不了是谁写的、什么时候写的，所以它们会被标成「来自代码」，")
+        print("在简历里单独成节，verify 也会对每一条给出 weak_evidence 警告。")
+        print("要补强：`honestcv audit %s` 会告诉你具体怎么做。" % args.path)
+    else:
+        print("Note: these facts come from files, not commits.")
+        print("Files cannot show who wrote them or when, so they are marked as coming from")
+        print("code, rendered in their own resume section, and every one of them raises a")
+        print("weak_evidence warning in verify.")
+        print("To strengthen them: `honestcv audit %s` says exactly how." % args.path)
+    return 0
+
+
 def cmd_audit(args: argparse.Namespace) -> int:
     author = _default_author(args.repo, args.author)
     try:
         report = audit_repo(args.repo, author=author, since=args.since)
     except GitError as exc:
+        if os.path.isdir(args.repo):
+            # Not a repository at all. That is a situation to report, not an error:
+            # it is exactly the case this tool must handle honestly.
+            print(render_no_history(args.repo, args.lang))
+            return 0
         print("git: %s" % exc, file=sys.stderr)
         return 2
     if args.json:
@@ -304,6 +344,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--author"); p.add_argument("--since")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_audit)
+
+    p = sub.add_parser("scan", help="read source code that has no git history behind it")
+    p.add_argument("path")
+    p.add_argument("--project", help="name to use in the facts (default: the directory name)")
+    p.add_argument("--repo-url", help="e.g. https://github.com/you/project — makes file evidence clickable")
+    p.add_argument("--branch", default="main", help="branch for those links (default: %(default)s)")
+    p.set_defaults(func=cmd_scan)
 
     p = sub.add_parser("facts", help="list what the fact base holds")
     p.add_argument("--skill"); p.add_argument("--json", action="store_true")

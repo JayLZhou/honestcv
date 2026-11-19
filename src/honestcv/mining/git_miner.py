@@ -17,7 +17,8 @@ from dataclasses import dataclass, field
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
 from ..models import Evidence, Fact
-from ..taxonomy import load_skills, skills_for_dependency, skills_for_path, skills_in_text
+from ..taxonomy import (path_hint_skills, skills_for_dependency, skills_for_path,
+                        skills_in_text)
 from ..i18n import render_fact
 
 REC = "\x01"
@@ -378,20 +379,7 @@ def _issue_facts(commits: Sequence[Commit], slug: str, base: str, limit: int = 6
     return facts
 
 
-def _path_hint_skills(path: str) -> List[str]:
-    """Skills a path proves on its own: a Dockerfile means Docker, a workflow file
-    means CI. Extensions are excluded here - one .py file is not "introduced Python"."""
-    low = path.lower().replace("\\", "/")
-    base = os.path.basename(low)
-    out = set()
-    for name, spec in load_skills().items():
-        for hint in spec.get("paths", []):
-            if hint in low or base == hint:
-                out.add(name)
-    if low.endswith((".yml", ".yaml")) and any(
-            k in low for k in ("k8s/", "kubernetes/", "charts/", "manifests/")):
-        out.add("Kubernetes")
-    return sorted(out)
+_path_hint_skills = path_hint_skills   # kept: the miner and the scanner share it
 
 
 def _tool_setups(commits: Sequence[Commit], slug: str, base: str, covered: Sequence[str],

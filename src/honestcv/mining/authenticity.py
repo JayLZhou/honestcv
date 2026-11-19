@@ -215,6 +215,69 @@ def audit_repo(repo: str, author: Optional[str] = None, since: Optional[str] = N
     return report
 
 
+def render_no_history(path: str, lang: str = "zh") -> str:
+    """What a reviewer can and cannot see when there is no history at all."""
+    from .code_scanner import scan_tree, summarise
+
+    zh = lang == "zh"
+    result = scan_tree(path)
+    lines: List[str] = []
+    lines.append("# %s" % ("证据强度体检" if zh else "Evidence strength audit"))
+    lines.append("")
+    lines.append("**%s**: `%s`" % ("目录" if zh else "Directory", path))
+    lines.append("")
+    if zh:
+        lines.append("**这里没有 git 历史。** 不是分数低，是这一项根本无法评分。")
+        lines.append("")
+        lines.append("## 审阅者看得见的")
+        lines.append("")
+        lines.append("- %s" % summarise(result, lang))
+        lines.append("- 代码本身：接口、数据模型、测试、用到的技术——`honestcv scan` 能把这些数出来。")
+        lines.append("")
+        lines.append("## 审阅者看不见的")
+        lines.append("")
+        lines.append("- **是谁写的。** 文件里没有作者。")
+        lines.append("- **什么时候写的。** 没有时间线，也就没有『两周的晚上』这个故事。")
+        lines.append("- **怎么长出来的。** 没有返工、没有修复、没有第一版崩掉的痕迹——而这恰恰是面试官最想听的部分。")
+        lines.append("")
+        lines.append("## 怎么办")
+        lines.append("")
+        lines.append("1. **先把现有的东西数出来**：`honestcv scan <目录>`。这些事实会被标成「来自代码」，"
+                     "简历里单独成节，不会被包装成可核验的。")
+        lines.append("2. **从今天开始提交。** 今天建仓库、今天的第一个 commit，这是诚实的；"
+                     "把历史伪造成几个月的样子不是——而且 `honestcv audit` 一眼就能看出那个模式。")
+        lines.append("3. **把代码讲不出来的部分补上**：`honestcv interview`。为什么这么设计、"
+                     "第一版出了什么问题——这些只有你能提供，而且它们会被明确标成自述。")
+    else:
+        lines.append("**There is no git history here.** This is not a low score; it is a thing that "
+                     "cannot be scored.")
+        lines.append("")
+        lines.append("## What a reviewer can see")
+        lines.append("")
+        lines.append("- %s" % summarise(result, lang))
+        lines.append("- The code itself: endpoints, data models, tests, the technologies the imports "
+                     "prove. `honestcv scan` counts them.")
+        lines.append("")
+        lines.append("## What a reviewer cannot see")
+        lines.append("")
+        lines.append("- **Who wrote it.** Files carry no author.")
+        lines.append("- **When.** No timeline means no \"three weeks of evenings\" story.")
+        lines.append("- **How it grew.** No rework, no fixes, no trace of a first version that broke - "
+                     "which is the part an interviewer actually asks about.")
+        lines.append("")
+        lines.append("## What to do")
+        lines.append("")
+        lines.append("1. **Count what is already there**: `honestcv scan <dir>`. Those facts are marked "
+                     "as coming from code and rendered in their own section - never dressed up as verifiable.")
+        lines.append("2. **Start committing today.** A repository created today, with today's first "
+                     "commit, is honest. A history backdated to look like months of work is not - and "
+                     "`honestcv audit` recognises that shape anyway.")
+        lines.append("3. **Add what the code cannot say**: `honestcv interview`. Why you designed it "
+                     "that way, what broke in the first version. Only you have that, and it is labelled "
+                     "self-reported.")
+    return "\n".join(lines) + "\n"
+
+
 FLAG_TEXT = {
     "initial_dump": (
         "The first commit contains most of the project. A reviewer reads this as code that arrived from somewhere else.",

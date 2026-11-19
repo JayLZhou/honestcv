@@ -109,6 +109,17 @@ def render_match(report: MatchReport, lang: str = "zh") -> str:
     lines.append("**%s**: %.0f%% %s" % (
         "硬性要求覆盖率" if zh else "Must-have coverage", must_ratio * 100,
         "（有证据支撑的比例）" if zh else "(backed by evidence)"))
+    weak = [c for c in report.covered(("must",))
+            if all(f.source == "code" for f in c.facts)]
+    if weak:
+        lines.append("")
+        if zh:
+            lines.append("> 其中 %d 条只有**文件**支撑，没有提交历史——文件证明不了是谁写的、什么时候写的。"
+                         "`honestcv audit` 会告诉你怎么补强。" % len(weak))
+        else:
+            lines.append("> %d of those rest on **files** alone, with no commit history behind them. "
+                         "Files cannot show who wrote them or when; `honestcv audit` says how to "
+                         "strengthen that." % len(weak))
     lines.append("")
 
     for kind, header in (("must", "硬性要求" if zh else "Must have"),

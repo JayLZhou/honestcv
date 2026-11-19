@@ -30,7 +30,13 @@ hcv --lang en letter   --jd "$here/jd-backend-en.txt" -o letter.md
 hcv --lang en plan     --jd "$here/jd-backend-en.txt" -o plan.md
 hcv --lang en practice --jd "$here/jd-backend-en.txt" -o practice.md
 
-echo "== 5. tamper with the resume, and watch verify catch it =="
+echo "== 5. the same project with no git history at all =="
+cp -r "$work/orders" "$work/orders-nogit"
+rm -rf "$work/orders-nogit/.git"
+hcv --lang en audit "$work/orders-nogit" | head -12
+hcv --lang en scan "$work/orders-nogit"
+
+echo "== 6. tamper with the resume, and watch verify catch it =="
 printf -- '- Led a team of 12 engineers and cut latency by 90%%\n' >> resume.md
 if hcv --lang en verify resume.md; then
   echo "FAIL: the verifier did not catch an invented claim" >&2

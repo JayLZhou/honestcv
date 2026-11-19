@@ -64,8 +64,8 @@ def render_resume(
     out.append("")
     shown: List[Fact] = []
     for fact in order_facts(factbase, report):
-        if fact.source == "interview":
-            continue
+        if fact.source in ("interview", "code"):
+            continue   # both get their own section, with their own caveat
         if len(shown) >= max_bullets:
             break
         sentence = (overrides or {}).get(fact.id) or render_fact(fact.template, fact.payload, lang)
@@ -98,6 +98,21 @@ def render_resume(
                 fact_ids=[f.id for f in supporting],
                 evidence=[e.eid for f in supporting for e in f.evidence[:1]],
             )
+        out.append("")
+
+    # --- facts that rest on files rather than commits ---
+    code_facts = [f for f in order_facts(factbase, report) if f.source == "code"]
+    if code_facts:
+        out.append("## %s" % ui("code_section", lang))
+        out.append("")
+        for fact in code_facts[:max_bullets]:
+            sentence = (overrides or {}).get(fact.id) or render_fact(fact.template, fact.payload, lang)
+            refs = " ".join(e.link() for e in fact.evidence[:max_links])
+            line = "- %s %s" % (sentence, refs) if refs else "- %s" % sentence
+            out.append(line)
+            trace.add(normalise(line), fact_ids=[fact.id], evidence=fact.evidence_ids()[:max_links])
+        out.append("")
+        out.append("*%s*" % ui("code_caveat", lang))
         out.append("")
 
     # --- what the person told us, clearly separated ---

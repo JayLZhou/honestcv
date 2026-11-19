@@ -110,6 +110,22 @@ def skills_for_dependency(token: str) -> List[str]:
     return sorted(out)
 
 
+def path_hint_skills(path: str) -> List[str]:
+    """Skills a path proves on its own: a Dockerfile means Docker, a workflow file
+    means CI. Extensions are excluded - one .py file is not "introduced Python"."""
+    low = path.lower().replace("\\", "/")
+    base = os.path.basename(low)
+    found: Set[str] = set()
+    for name, spec in load_skills().items():
+        for hint in spec.get("paths", []):
+            if hint in low or base == hint:
+                found.add(name)
+    if low.endswith((".yml", ".yaml")) and any(
+            k in low for k in ("k8s/", "kubernetes/", "charts/", "manifests/")):
+        found.add("Kubernetes")
+    return sorted(found)
+
+
 def skills_in_text(text: str) -> List[str]:
     """Canonical skills mentioned anywhere in free text (a commit subject, a JD line)."""
     if not text:
